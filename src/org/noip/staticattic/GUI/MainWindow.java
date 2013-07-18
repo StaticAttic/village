@@ -44,7 +44,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			try {
 				
-				icon = new ImageIcon(ImageIO.read(new File("C:/Users/Ollie/Pictures/icon.png")));
+				icon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/icon.png")));
 				
 			} catch (IOException e1) {
 

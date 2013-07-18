@@ -33,7 +33,7 @@ public class ShowTitleScreen extends GUIEvent {
 			
 			try {
 				
-				logo = new ImageIcon(ImageIO.read(new File("C:/Users/Ollie/Pictures/staticattic.fw.png")));
+				logo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/staticattic.fw.png")));
 				
 			} catch (IOException e1) {
 
