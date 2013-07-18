@@ -17,8 +17,8 @@ public class ShowMenuScreen extends GUIEvent{
 	@Override
 	public void execute() {
 		
+		super.getMain().mainpanel.removeAll();
 		super.getMain().mainpanel.setBackground(Color.WHITE);
-		super.getMain().mainpanel.remove(0);
 		
 		JButton exit = new JButton("Exit");
 		exit.setBounds((int)(super.getMain().screensize.getWidth()/2)-50, (int)(super.getMain().screensize.getHeight()/2)-15, 100, 30);
