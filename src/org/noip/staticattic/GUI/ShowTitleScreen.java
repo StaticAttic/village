@@ -25,7 +25,7 @@ public class ShowTitleScreen extends GUIEvent {
 		
 		try {
 			
-			logo = new ImageIcon(ImageIO.read(getClass().getResource("/resources/img/staticattic.fw.png")));
+			logo = new ImageIcon(ImageIO.read(super.getMain().getClass().getResource("/resources/img/staticattic.fw.png")));
 			
 		} catch (Exception e) {
 			
