@@ -1,8 +1,10 @@
-package org.noip.staticattic.GUI;
+package org.noip.staticattic.GUI.Events;
 
 import java.awt.Color;
 
 import javax.swing.JButton;
+
+import org.noip.staticattic.GUI.MainWindow;
 
 public class ShowMenuScreen extends GUIEvent{
 

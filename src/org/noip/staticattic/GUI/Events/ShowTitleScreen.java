@@ -1,4 +1,4 @@
-package org.noip.staticattic.GUI;
+package org.noip.staticattic.GUI.Events;
 
 import java.awt.Color;
 import java.io.File;
@@ -7,6 +7,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import org.noip.staticattic.GUI.MainWindow;
 
 public class ShowTitleScreen extends GUIEvent {
 

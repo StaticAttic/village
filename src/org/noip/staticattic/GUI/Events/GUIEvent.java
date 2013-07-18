@@ -1,4 +1,6 @@
-package org.noip.staticattic.GUI;
+package org.noip.staticattic.GUI.Events;
+
+import org.noip.staticattic.GUI.MainWindow;
 
 public abstract class GUIEvent {
 	

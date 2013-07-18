@@ -14,13 +14,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.noip.staticattic.GUI.Events.ShowMenuScreen;
+import org.noip.staticattic.GUI.Events.ShowTitleScreen;
+
 public class MainWindow extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+	public Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 	private UIHandler handler = new UIHandler();
-	JPanel mainpanel;
+	public JPanel mainpanel;
 	
 	public MainWindow() {
 		
