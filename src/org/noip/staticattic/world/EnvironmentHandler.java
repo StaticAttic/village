@@ -76,6 +76,102 @@ public class EnvironmentHandler implements Runnable {
 		main.repaint();
 		
 	}
+	
+	public void moveRight() {
+		
+		main.mainpanel.removeAll();
+		
+		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		for (Tile[] row : array) {
+			
+			for (Tile e : row) {
+				
+				JLabel lbl = new JLabel(e.getIcon());
+				e.getLocation().setX(e.getLocation().getX()+48);
+				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
+				
+				main.mainpanel.add(lbl);
+				
+			}
+			
+		}
+		
+		main.repaint();
+		
+	}
+	
+	public void moveLeft() {
+			
+		main.mainpanel.removeAll();
+			
+		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+			
+		for (Tile[] row : array) {
+				
+			for (Tile e : row) {
+					
+				JLabel lbl = new JLabel(e.getIcon());
+				e.getLocation().setX(e.getLocation().getX()-48);
+				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
+					
+				main.mainpanel.add(lbl);
+					
+			}
+				
+		}
+			
+		main.repaint();	
+		
+	}
+	
+	public void moveUp() {
+		
+		main.mainpanel.removeAll();
+			
+		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+			
+		for (Tile[] row : array) {
+				
+			for (Tile e : row) {
+					
+				JLabel lbl = new JLabel(e.getIcon());
+				e.getLocation().setY(e.getLocation().getY()-48);
+				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
+					
+				main.mainpanel.add(lbl);
+					
+			}
+				
+		}
+			
+		main.repaint();	
+		
+	}
+	
+	public void moveDown() {
+		
+		main.mainpanel.removeAll();
+			
+		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+			
+		for (Tile[] row : array) {
+				
+			for (Tile e : row) {
+					
+				JLabel lbl = new JLabel(e.getIcon());
+				e.getLocation().setY(e.getLocation().getY()+48);
+				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
+					
+				main.mainpanel.add(lbl);
+					
+			}
+				
+		}
+			
+		main.repaint();	
+		
+	}
 
 	public Environment getMainEnvironment() {
 		

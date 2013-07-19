@@ -10,9 +10,11 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
@@ -30,8 +32,11 @@ public class MainWindow extends JFrame implements ActionListener {
 	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
 	public JPanel mainpanel;
 	private Player player;
+	private MainWindow main;
 	
 	public MainWindow() {
+		
+		main = this;
 		
 		this.setTitle("Village");
 		this.setUndecorated(true);
@@ -65,6 +70,21 @@ public class MainWindow extends JFrame implements ActionListener {
 		mainpanel = new JPanel();
 		mainpanel.setVisible(true);
 		mainpanel.setLayout(null);
+		
+		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightpressed");
+		mainpanel.getActionMap().put("rightpressed", new RightPressed());
+		
+		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftpressed");
+		mainpanel.getActionMap().put("leftpressed", new LeftPressed());
+		
+		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("UP"), "uppressed");
+		mainpanel.getActionMap().put("uppressed", new UpPressed());
+		
+		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downpressed");
+		mainpanel.getActionMap().put("downpressed", new DownPressed());
+		
+		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "escpressed");
+		mainpanel.getActionMap().put("escpressed", new EscPressed());
 		
 		this.add(mainpanel);
 		this.setVisible(true);
@@ -118,6 +138,66 @@ public class MainWindow extends JFrame implements ActionListener {
 		
 		this.player = player;
 		
+	}
+	
+	class RightPressed extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			ENhandler.moveLeft();
+			
+		}
+	}
+	
+	class LeftPressed extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			ENhandler.moveRight();
+			
+		}
+	}
+	
+	class UpPressed extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			ENhandler.moveDown();
+			
+		}
+	}
+	
+	class DownPressed extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			ENhandler.moveUp();
+			
+		}
+	}
+	
+	class EscPressed extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			UIhandler.addToQueue(new ShowMenuScreen(main, 0));
+			
+		}
 	}
 	
 }
