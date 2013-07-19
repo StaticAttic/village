@@ -2,9 +2,11 @@ package org.noip.staticattic.GUI.Events;
 
 import java.awt.Color;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -24,24 +26,34 @@ public class ShowTitleScreen extends GUIEvent {
 		super.getMain().mainpanel.setBackground(Color.BLACK);
 		
 		ImageIcon logo = new ImageIcon();
+		AudioInputStream audioIn;
+		Clip clip = null;
 		
 		try {
 			
 			logo = new ImageIcon(ImageIO.read(super.getMain().getClass().getResource("/resources/img/staticattic.fw.png")));
+			audioIn = AudioSystem.getAudioInputStream(super.getMain().getClass().getResource("/resources/wav/startup.wav"));
+			clip = AudioSystem.getClip();
+			clip.open(audioIn);
 			
 		} catch (Exception e) {
 			
 			try {
 				
 				logo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/staticattic.fw.png")));
+				audioIn = AudioSystem.getAudioInputStream(new File(System.getProperty("user.home")+"/village/startup.wav"));
+				clip = AudioSystem.getClip();
+				clip.open(audioIn);
 				
-			} catch (IOException e1) {
+			} catch (Exception e1) {
 
 				e1.printStackTrace();
 				
 			}
 			
 		}
+		
+		clip.start();
 		
 		JLabel companylogo = new JLabel(logo);
 		companylogo.setBounds((int)(super.getMain().screensize.getWidth()/2)-250, (int)(super.getMain().screensize.getHeight()/2)-150, 500, 300);
