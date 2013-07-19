@@ -14,16 +14,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
+import org.noip.staticattic.entities.Player;
+import org.noip.staticattic.world.Environment;
+import org.noip.staticattic.world.EnvironmentHandler;
 
 public class MainWindow extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	public Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
-	private UIHandler handler = new UIHandler();
+	private UIHandler UIhandler = new UIHandler();
+	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
 	public JPanel mainpanel;
+	private Player player;
 	
 	public MainWindow() {
 		
@@ -63,10 +69,10 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.add(mainpanel);
 		this.setVisible(true);
 
-		executor.scheduleAtFixedRate(handler, 0L, 20L, TimeUnit.MILLISECONDS);
+		executor.scheduleAtFixedRate(UIhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 		
-		handler.addToQueue(new ShowTitleScreen(this, 0));
-		handler.addToQueue(new ShowMenuScreen(this, 4000));
+		UIhandler.addToQueue(new ShowTitleScreen(this, 0));
+		UIhandler.addToQueue(new ShowMenuScreen(this, 4000));
 		
 	}
 
@@ -77,6 +83,19 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			ExitApplication();
 			
+		} else if (a.getActionCommand().equals("newgame")) {
+			
+			UIhandler.addToQueue(new ShowCharacterCreationScreen(this, 0));
+			
+		} else if (a.getActionCommand().equals("createcharacter")) {
+			
+			player = new Player((int)(screensize.getWidth()/2)-12, (int)(screensize.getHeight()/2)-48);
+			player.setCurrentEnvironment(new Environment());
+			
+			mainpanel.removeAll();
+			
+			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
+			
 		}
 		
 	}
@@ -85,6 +104,18 @@ public class MainWindow extends JFrame implements ActionListener {
 		
 		executor.shutdownNow();
 		System.exit(0);
+		
+	}
+
+	public Player getPlayer() {
+		
+		return player;
+		
+	}
+
+	public void setPlayer(Player player) {
+		
+		this.player = player;
 		
 	}
 	

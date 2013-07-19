@@ -1,5 +1,7 @@
 package org.noip.staticattic.entities;
 
+import org.noip.staticattic.world.Environment;
+
 public abstract class Human extends Entity {
 
 	public enum AnimationState {
@@ -9,6 +11,7 @@ public abstract class Human extends Entity {
 	}
 	
 	private AnimationState state = AnimationState.IDLE;
+	private Environment currentenvironment;
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -22,6 +25,18 @@ public abstract class Human extends Entity {
 		
 	}
 	
+	public Environment getCurrentEnvironment() {
+		
+		return currentenvironment;
+		
+	}
+
+	public void setCurrentEnvironment(Environment currentenvironment) {
+		
+		this.currentenvironment = currentenvironment;
+		
+	}
+
 	public Human(int xloc, int yloc) {
 		
 		super(xloc, yloc);
