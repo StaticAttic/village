@@ -111,6 +111,25 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			player = new Player((int)(screensize.getWidth()/2)-12, (int)(screensize.getHeight()/2)-48);
 			ENhandler.setMainEnvironment(new Environment());
+			
+			try {
+				
+				player.setIcon(new ImageIcon(ImageIO.read(main.getClass().getResource("/resources/img/player.png"))));
+				
+			} catch (Exception e1) {
+				
+				try {
+					
+					player.setIcon(new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png"))));
+					
+				} catch (Exception e2) {
+					
+					e2.printStackTrace();
+					
+				}
+				
+			}
+			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
 			
 			mainpanel.removeAll();

@@ -15,32 +15,11 @@ public class EnvironmentHandler implements Runnable {
 	private MainWindow main;
 	private Environment environment = null;
 	private Environment MainEnvironment;
-	private ImageIcon playericon = null;
 	private JLabel player;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
 		this.main = main;
-		
-		try {
-			
-			playericon = new ImageIcon(ImageIO.read(main.getClass().getResource("/resources/img/player.png")));
-			
-		} catch (Exception e1) {
-			
-			try {
-				
-				playericon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
-				
-			} catch (Exception e2) {
-				
-				e2.printStackTrace();
-				
-			}
-			
-		}
-		
-		player = new JLabel(playericon);
 		
 	}
 	
@@ -59,6 +38,8 @@ public class EnvironmentHandler implements Runnable {
 	private void changeEnvironments() {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		player = new JLabel(main.getPlayer().getIcon());
 		
 		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
 		
