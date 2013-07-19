@@ -4,13 +4,13 @@ import org.noip.staticattic.entities.Tile;
 
 public class Environment {
 	
-	private Tile[][] array = new Tile[8][8];
+	private Tile[][] array = new Tile[20][20];
 	
 	public Environment() {
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 20; i++) {
 			
-			for (int x = 0; x < 8; x++) {
+			for (int x = 0; x < 20; x++) {
 				
 				array[i][x] = new Tile(48*i,48*x);
 				

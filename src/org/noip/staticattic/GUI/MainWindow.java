@@ -90,7 +90,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		} else if (a.getActionCommand().equals("createcharacter")) {
 			
 			player = new Player((int)(screensize.getWidth()/2)-12, (int)(screensize.getHeight()/2)-48);
-			player.setCurrentEnvironment(new Environment());
+			ENhandler.setMainEnvironment(new Environment());
+			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
 			
 			mainpanel.removeAll();
 			

@@ -13,6 +13,8 @@ import org.noip.staticattic.entities.Tile.Type;
 public class EnvironmentHandler implements Runnable {
 
 	private MainWindow main;
+	private Environment environment = null;
+	private Environment MainEnvironment;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
@@ -23,6 +25,17 @@ public class EnvironmentHandler implements Runnable {
 	@Override
 	public void run() {
 	
+		if (!main.getPlayer().getCurrentEnvironment().equals(environment)) {
+			
+			environment = main.getPlayer().getCurrentEnvironment();
+			changeEnvironments();
+			
+		}
+		
+	}
+	
+	private void changeEnvironments() {
+		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
 		for (Tile[] row : array) {
@@ -60,7 +73,19 @@ public class EnvironmentHandler implements Runnable {
 			
 		}
 		
-		main.mainpanel.repaint();
+		main.repaint();
+		
+	}
+
+	public Environment getMainEnvironment() {
+		
+		return MainEnvironment;
+		
+	}
+
+	public void setMainEnvironment(Environment mainEnvironment) {
+		
+		MainEnvironment = mainEnvironment;
 		
 	}
 
