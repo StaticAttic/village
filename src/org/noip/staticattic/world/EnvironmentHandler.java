@@ -60,6 +60,10 @@ public class EnvironmentHandler implements Runnable {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
+		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
+		
+		main.mainpanel.add(player);
+		
 		for (Tile[] row : array) {
 			
 			for (Tile e : row) {
@@ -94,10 +98,6 @@ public class EnvironmentHandler implements Runnable {
 			}
 			
 		}
-		
-		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
-		
-		main.mainpanel.add(player);
 		
 		main.repaint();
 		
