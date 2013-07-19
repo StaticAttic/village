@@ -1,4 +1,4 @@
-package org.noip.world;
+package org.noip.staticattic.world;
 
 public class Environment {
 	
