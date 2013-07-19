@@ -17,6 +17,7 @@ public class UIHandler implements Runnable {
 				
 				e.execute();
 				events.remove(e);
+				break;
 				
 			} else {
 				
