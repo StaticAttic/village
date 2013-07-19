@@ -19,8 +19,6 @@ public class ShowCharacterCreationScreen extends GUIEvent {
 	@Override
 	public void execute() {
 		
-		System.out.println("executed");
-		
 		super.getMain().mainpanel.removeAll();
 		
 		JButton cont = new JButton();
@@ -62,7 +60,7 @@ public class ShowCharacterCreationScreen extends GUIEvent {
 		
 		super.getMain().mainpanel.add(cont);
 		
-		super.getMain().mainpanel.repaint();
+		super.getMain().repaint();
 		
 	}
 

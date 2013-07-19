@@ -13,7 +13,7 @@ public class UIHandler implements Runnable {
 		
 		for (GUIEvent e: events) {
 			
-			if (e.getDelay() == 0) {
+			if (e.getDelay() <= 0) {
 				
 				e.execute();
 				events.remove(e);
