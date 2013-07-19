@@ -15,10 +15,32 @@ public class EnvironmentHandler implements Runnable {
 	private MainWindow main;
 	private Environment environment = null;
 	private Environment MainEnvironment;
+	private ImageIcon playericon = null;
+	private JLabel player;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
 		this.main = main;
+		
+		try {
+			
+			playericon = new ImageIcon(ImageIO.read(main.getClass().getResource("/resources/img/player.png")));
+			
+		} catch (Exception e1) {
+			
+			try {
+				
+				playericon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
+				
+			} catch (Exception e2) {
+				
+				e2.printStackTrace();
+				
+			}
+			
+		}
+		
+		player = new JLabel(playericon);
 		
 	}
 	
@@ -73,6 +95,10 @@ public class EnvironmentHandler implements Runnable {
 			
 		}
 		
+		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
+		
+		main.mainpanel.add(player);
+		
 		main.repaint();
 		
 	}
@@ -80,6 +106,7 @@ public class EnvironmentHandler implements Runnable {
 	public void moveRight() {
 		
 		main.mainpanel.removeAll();
+		main.mainpanel.add(player);
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
@@ -104,6 +131,7 @@ public class EnvironmentHandler implements Runnable {
 	public void moveLeft() {
 			
 		main.mainpanel.removeAll();
+		main.mainpanel.add(player);
 			
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
@@ -128,6 +156,7 @@ public class EnvironmentHandler implements Runnable {
 	public void moveUp() {
 		
 		main.mainpanel.removeAll();
+		main.mainpanel.add(player);
 			
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
@@ -152,6 +181,7 @@ public class EnvironmentHandler implements Runnable {
 	public void moveDown() {
 		
 		main.mainpanel.removeAll();
+		main.mainpanel.add(player);
 			
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
