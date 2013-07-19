@@ -22,7 +22,7 @@ public class ShowMenuScreen extends GUIEvent{
 		super.getMain().mainpanel.removeAll();
 		super.getMain().mainpanel.setBackground(Color.WHITE);
 		
-		JButton exit = new JButton("Exit");
+		JButton exit = new JButton();
 		
 		ImageIcon upstate = new ImageIcon();
 		ImageIcon overstate = new ImageIcon();
@@ -53,11 +53,9 @@ public class ShowMenuScreen extends GUIEvent{
 		exit.setIcon(upstate);
 		exit.setPressedIcon(downstate);
 		exit.setRolloverIcon(overstate);
-		exit.setHorizontalTextPosition(JButton.CENTER);
-		exit.setVerticalTextPosition(JButton.CENTER);
 		exit.setContentAreaFilled(false);
 		exit.setBorderPainted(false);
-		exit.setBounds((int)(super.getMain().screensize.getWidth()/2)-100, (int)(super.getMain().screensize.getHeight()/2)-15, 200, 30);
+		exit.setBounds((int)(super.getMain().screensize.getWidth()/2)-200, (int)(super.getMain().screensize.getHeight()/2)-30, 400, 60);
 		exit.setActionCommand("exit");
 		exit.addActionListener(super.getMain());
 		
