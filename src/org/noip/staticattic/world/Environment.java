@@ -12,7 +12,7 @@ public class Environment {
 			
 			for (int x = 0; x < 100; x++) {
 				
-				array[i][x] = new Tile(48*i,48*x);
+				array[i][x] = new Tile(34*i,34*x);
 				
 			}
 			

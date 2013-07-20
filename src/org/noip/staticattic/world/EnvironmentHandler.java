@@ -36,7 +36,7 @@ public class EnvironmentHandler implements Runnable {
 		  
 		player = new JLabel(main.getPlayer().getIcon());
 		  
-		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
+		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 34, 44);
 		  
 		main.mainpanel.add(player);
 		  
@@ -64,7 +64,7 @@ public class EnvironmentHandler implements Runnable {
 			
 			for (Tile e : row) {
 				
-				e.getLocation().setX(e.getLocation().getX()+48);				
+				e.getLocation().setX(e.getLocation().getX()+34);				
 				e.updatePosition();
 												
 			}
@@ -83,7 +83,7 @@ public class EnvironmentHandler implements Runnable {
 				
 			for (Tile e : row) {
 					
-				e.getLocation().setX(e.getLocation().getX()-48);				
+				e.getLocation().setX(e.getLocation().getX()-34);				
 				e.updatePosition();
 				
 			}
@@ -102,7 +102,7 @@ public class EnvironmentHandler implements Runnable {
 				
 			for (Tile e : row) {
 				
-				e.getLocation().setY(e.getLocation().getY()-48);				
+				e.getLocation().setY(e.getLocation().getY()-34);				
 				e.updatePosition();
 				
 			}
@@ -121,7 +121,7 @@ public class EnvironmentHandler implements Runnable {
 				
 			for (Tile e : row) {					
 				
-				e.getLocation().setY(e.getLocation().getY()+48);				
+				e.getLocation().setY(e.getLocation().getY()+34);				
 				e.updatePosition();
 				
 			}
