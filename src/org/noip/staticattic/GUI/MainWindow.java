@@ -4,14 +4,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
@@ -46,27 +42,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		
-		ImageIcon icon = new ImageIcon();
-		
-		try {
-			
-			icon = new ImageIcon(ImageIO.read(getClass().getResource("/resources/img/icon.png")));
-			
-		} catch (Exception e) {
-			
-			try {
-				
-				icon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/icon.png")));
-				
-			} catch (IOException e1) {
-
-				e1.printStackTrace();
-				
-			}
-			
-		}
-		
-		this.setIconImage(icon.getImage());
+		this.setIconImage(TextureHandler.getIcon().getImage());
 		
 		mainpanel = new JPanel();
 		mainpanel.setVisible(true);
@@ -109,8 +85,6 @@ public class MainWindow extends JFrame implements ActionListener {
 			UIhandler.addToQueue(new ShowCharacterCreationScreen(this, 0));
 			
 		} else if (a.getActionCommand().equals("createcharacter")) {
-			
-			TextureHandler.loadAllTextures();
 			
 			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);
 			ENhandler.setMainEnvironment(new Environment());
