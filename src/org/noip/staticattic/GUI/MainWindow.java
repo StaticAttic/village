@@ -112,7 +112,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			TextureHandler.loadAllTextures();
 			
-			player = new Player((int)(screensize.getWidth()/2)-12, (int)(screensize.getHeight()/2)-48);
+			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);
 			ENhandler.setMainEnvironment(new Environment());
 			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
