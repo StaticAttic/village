@@ -11,7 +11,7 @@ public abstract class Entity {
 	
 	private Location location;
 	private final UUID entityID;
-	private ImageIcon icon = new ImageIcon();
+	private ImageIcon icon;
 	private JLabel label;
 
 	public UUID getID() {
@@ -30,23 +30,32 @@ public abstract class Entity {
 		
 		this.location = new Location(xloc, yloc);
 		this.entityID = UUID.randomUUID();
+		this.icon = new ImageIcon();
 		
 	}
 
 	public JLabel getLabel() {
+		
 		return label;
+		
 	}
 
 	public void setLabel(JLabel label) {
+		
 		this.label = label;
+		
 	}
 
 	public ImageIcon getIcon() {
+		
 		return icon;
+		
 	}
 
 	public void setIcon(ImageIcon icon) {
+		
 		this.icon = icon;
+		
 	}
 
 }
