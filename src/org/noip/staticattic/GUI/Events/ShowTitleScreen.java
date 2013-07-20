@@ -1,14 +1,12 @@
 package org.noip.staticattic.GUI.Events;
 
 import java.awt.Color;
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JLabel;
 
 import org.noip.staticattic.GUI.MainWindow;
+import org.noip.staticattic.fileutils.AudioHandler;
 import org.noip.staticattic.fileutils.TextureHandler;
 
 public class ShowTitleScreen extends GUIEvent {
@@ -24,28 +22,16 @@ public class ShowTitleScreen extends GUIEvent {
 		
 		super.getMain().mainpanel.setBackground(Color.BLACK);
 		
-		AudioInputStream audioIn;
 		Clip clip = null;
 		
 		try {
 			
-			audioIn = AudioSystem.getAudioInputStream(super.getMain().getClass().getResource("/resources/wav/startup.wav"));
 			clip = AudioSystem.getClip();
-			clip.open(audioIn);
+			clip.open(AudioHandler.getStartup());
 			
 		} catch (Exception e) {
 			
-			try {
-				
-				audioIn = AudioSystem.getAudioInputStream(new File(System.getProperty("user.home")+"/village/startup.wav"));
-				clip = AudioSystem.getClip();
-				clip.open(audioIn);
-				
-			} catch (Exception e1) {
-
-				e1.printStackTrace();
-				
-			}
+			e.printStackTrace();
 			
 		}
 		
