@@ -14,13 +14,15 @@ public class TextureHandler {
 		
 		try {
 		    
-			grass = (new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/tiles/grass.fw.png"))));
+			grass = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/tiles/grass.fw.png")));
+			player = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude.png")));
 		    
 		} catch (Exception e1) {
 		    
 			try {
 		     
-				grass = (new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png"))));
+				grass = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png")));
+				player = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
 		     
 		    } catch (Exception e2) {
 		     
@@ -29,8 +31,6 @@ public class TextureHandler {
 		    }
 		    
         }
-		
-		
 		
 	}
 

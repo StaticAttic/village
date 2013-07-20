@@ -20,6 +20,7 @@ import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
+import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 import org.noip.staticattic.world.EnvironmentHandler;
 
@@ -37,6 +38,8 @@ public class MainWindow extends JFrame implements ActionListener {
 	public MainWindow() {
 		
 		main = this;
+		
+		TextureHandler.loadAllTextures();
 		
 		this.setTitle("Village");
 		this.setUndecorated(true);

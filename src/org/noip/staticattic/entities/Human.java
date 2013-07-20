@@ -49,6 +49,7 @@ public abstract class Human extends Entity {
 					  
 		this.setLabel(new JLabel(this.getIcon()));
 		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 34, 44);
+		
 	}	
 	
 	public String getName() {
