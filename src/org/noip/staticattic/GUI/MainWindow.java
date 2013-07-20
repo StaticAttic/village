@@ -214,6 +214,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
+			UIhandler.purgeQueue();
 			UIhandler.addToQueue(new ShowMenuScreen(main, 0));
 			
 		}

@@ -34,5 +34,11 @@ public class UIHandler implements Runnable {
 		events.add(event);
 		
 	}
+	
+	public void purgeQueue() {
+		
+		events.clear();
+		
+	}
 
 }
