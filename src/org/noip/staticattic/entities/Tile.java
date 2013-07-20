@@ -24,28 +24,28 @@ public class Tile extends Inanimate {
 		
 		if (this.getType().equals(Type.GRASS)) {
 			   
-			   try {
+			try {
 			    
-				   this.setIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/resources/img/tiles/grass.fw.png"))));
+				this.setIcon(new ImageIcon(ImageIO.read(this.getClass().getResource("/resources/img/tiles/grass.fw.png"))));
 			    
-			   } catch (Exception e1) {
+			} catch (Exception e1) {
 			    
-				   try {
+				try {
 			     
-				       this.setIcon(new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png"))));
+					this.setIcon(new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png"))));
 			     
-			       } catch (Exception e2) {
+			    } catch (Exception e2) {
 			     
-			           e2.printStackTrace();
+			         e2.printStackTrace();
 			     
-			       }
+			    }
 			    
-	           }
+	        }
 			   
 	    }
 			  
-			  this.setLbl(new JLabel(this.getIcon()));
-			  this.getLbl().setBounds(this.getLocation().getX(), this.getLocation().getY(), 48, 48);
+		this.setLbl(new JLabel(this.getIcon()));
+		this.getLbl().setBounds(this.getLocation().getX(), this.getLocation().getY(), 48, 48);
 		
 	}
 	

@@ -1,10 +1,13 @@
 package org.noip.staticattic.location;
 
+import org.noip.staticattic.entities.Tile;
+
 public class Location {
 
 	private int x;
 	private int y;
 	private String loc;
+	private Tile currenttile;
 	
 	public Location(int xloc,int yloc) {
 		
@@ -50,6 +53,18 @@ public class Location {
 		
 		this.setX(xloc);
 		this.setY(yloc);
+		
+	}
+
+	public Tile getCurrentTile() {
+		
+		return currenttile;
+		
+	}
+
+	public void setCurrentTile(Tile currenttile) {
+		
+		this.currenttile = currenttile;
 		
 	}
 	
