@@ -43,8 +43,6 @@ public class EnvironmentHandler implements Runnable {
 		   
 		}
 		  
-		System.out.println(main.mainpanel.getComponentCount());
-		  
 		main.repaint();
 		  
 	}
