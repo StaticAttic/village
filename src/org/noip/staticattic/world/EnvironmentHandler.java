@@ -34,25 +34,26 @@ public class EnvironmentHandler implements Runnable {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		  
-		  player = new JLabel(main.getPlayer().getIcon());
+		player = new JLabel(main.getPlayer().getIcon());
 		  
-		  player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
+		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 68, 88);
 		  
-		  main.mainpanel.add(player);
+		main.mainpanel.add(player);
 		  
-		  for (Tile[] row : array) {
+		for (Tile[] row : array) {
 		   
-		   for (Tile e : row) {
+			for (Tile e : row) {
 		    
-		    main.mainpanel.add(e.getLbl());
+				main.mainpanel.add(e.getLabel());
 		    
-		   }
+			}
 		   
-		  }
+		}
 		  
-		  System.out.println(main.mainpanel.getComponentCount());
+		System.out.println(main.mainpanel.getComponentCount());
 		  
-		  main.repaint();
+		main.repaint();
+		  
 	}
 	
 	public void moveRight() {

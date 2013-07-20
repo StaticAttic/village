@@ -10,7 +10,7 @@ public class Tile extends Inanimate {
 	
 	private Type type = Type.GRASS;
 	private ImageIcon icon = new ImageIcon();
-	private JLabel lbl;
+	private JLabel label;
 		
 	public enum Type{
 		
@@ -44,8 +44,8 @@ public class Tile extends Inanimate {
 			   
 	    }
 			  
-		this.setLbl(new JLabel(this.getIcon()));
-		this.getLbl().setBounds(this.getLocation().getX(), this.getLocation().getY(), 48, 48);
+		this.setLabel(new JLabel(this.getIcon()));
+		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 48, 48);
 		
 	}
 	
@@ -75,19 +75,19 @@ public class Tile extends Inanimate {
 	
 	public void updatePosition(){
 		
-		this.lbl.setLocation(this.getLocation().getX(), this.getLocation().getY());
+		this.label.setLocation(this.getLocation().getX(), this.getLocation().getY());
 		
 	}
 
-	public JLabel getLbl() {
+	public JLabel getLabel() {
 		
-		return lbl;
+		return label;
 		
 	}
 
-	public void setLbl(JLabel lbl) {
+	public void setLabel(JLabel label) {
 		
-		this.lbl = lbl;
+		this.label = label;
 		
 	}
 
