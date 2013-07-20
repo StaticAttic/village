@@ -72,6 +72,7 @@ public class EnvironmentHandler implements Runnable {
 				}
 				
 				JLabel lbl = new JLabel(e.getIcon());
+				e.setLbl(lbl);
 				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
 				
 				main.mainpanel.add(lbl);
@@ -85,22 +86,16 @@ public class EnvironmentHandler implements Runnable {
 	}
 	
 	public void moveRight() {
-		
-		main.mainpanel.removeAll();
-		main.mainpanel.add(player);
-		
+				
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
 		for (Tile[] row : array) {
 			
 			for (Tile e : row) {
 				
-				JLabel lbl = new JLabel(e.getIcon());
-				e.getLocation().setX(e.getLocation().getX()+48);
-				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
-				
-				main.mainpanel.add(lbl);
-				
+				e.getLocation().setX(e.getLocation().getX()+48);				
+				e.updatePosition();
+												
 			}
 			
 		}
@@ -109,23 +104,17 @@ public class EnvironmentHandler implements Runnable {
 		
 	}
 	
-	public void moveLeft() {
-			
-		main.mainpanel.removeAll();
-		main.mainpanel.add(player);
-			
+	public void moveLeft() {			
+		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
 		for (Tile[] row : array) {
 				
 			for (Tile e : row) {
 					
-				JLabel lbl = new JLabel(e.getIcon());
-				e.getLocation().setX(e.getLocation().getX()-48);
-				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
-					
-				main.mainpanel.add(lbl);
-					
+				e.getLocation().setX(e.getLocation().getX()-48);				
+				e.updatePosition();
+				
 			}
 				
 		}
@@ -135,22 +124,16 @@ public class EnvironmentHandler implements Runnable {
 	}
 	
 	public void moveUp() {
-		
-		main.mainpanel.removeAll();
-		main.mainpanel.add(player);
-			
+					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
 		for (Tile[] row : array) {
 				
 			for (Tile e : row) {
-					
-				JLabel lbl = new JLabel(e.getIcon());
-				e.getLocation().setY(e.getLocation().getY()-48);
-				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
-					
-				main.mainpanel.add(lbl);
-					
+				
+				e.getLocation().setY(e.getLocation().getY()-48);				
+				e.updatePosition();
+				
 			}
 				
 		}
@@ -160,22 +143,16 @@ public class EnvironmentHandler implements Runnable {
 	}
 	
 	public void moveDown() {
-		
-		main.mainpanel.removeAll();
-		main.mainpanel.add(player);
-			
+					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
 		for (Tile[] row : array) {
 				
-			for (Tile e : row) {
-					
-				JLabel lbl = new JLabel(e.getIcon());
-				e.getLocation().setY(e.getLocation().getY()+48);
-				lbl.setBounds(e.getLocation().getX(), e.getLocation().getY(), 48, 48);
-					
-				main.mainpanel.add(lbl);
-					
+			for (Tile e : row) {					
+				
+				e.getLocation().setY(e.getLocation().getY()+48);				
+				e.updatePosition();
+				
 			}
 				
 		}

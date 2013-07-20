@@ -1,11 +1,13 @@
 package org.noip.staticattic.entities;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Tile extends Inanimate {
 	
 	private Type type = Type.GRASS;
 	private ImageIcon icon = new ImageIcon();
+	private JLabel lbl;
 	
 	public enum Type{
 		
@@ -40,6 +42,24 @@ public class Tile extends Inanimate {
 	public void setType(Type type) {
 		
 		this.type = type;
+		
+	}
+	
+	public void updatePosition(){
+		
+		this.lbl.setLocation(this.getLocation().getX(), this.getLocation().getY());
+		
+	}
+
+	public JLabel getLbl() {
+		
+		return lbl;
+		
+	}
+
+	public void setLbl(JLabel lbl) {
+		
+		this.lbl = lbl;
 		
 	}
 
