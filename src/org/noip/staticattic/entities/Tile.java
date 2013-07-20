@@ -26,7 +26,7 @@ public class Tile extends Inanimate {
 	    }
 			  
 		this.setLabel(new JLabel(this.getIcon()));
-		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 48, 48);
+		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 34, 34);
 		
 	}
 	
