@@ -1,4 +1,4 @@
-package org.noip.staticattic.fileUtils;
+package org.noip.staticattic.fileutils;
 
 import java.io.File;
 

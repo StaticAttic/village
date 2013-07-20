@@ -2,7 +2,7 @@ package org.noip.staticattic.entities;
 
 import javax.swing.JLabel;
 
-import org.noip.staticattic.fileUtils.TextureHandler;
+import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 
 public abstract class Human extends Entity {
