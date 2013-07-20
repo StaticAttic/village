@@ -1,7 +1,5 @@
 package org.noip.staticattic.world;
 
-import javax.swing.JLabel;
-
 import org.noip.staticattic.GUI.MainWindow;
 import org.noip.staticattic.entities.Tile;
 
@@ -9,8 +7,7 @@ public class EnvironmentHandler implements Runnable {
 
 	private MainWindow main;
 	private Environment environment = null;
-	private Environment MainEnvironment;
-	private JLabel player;
+	private Environment MainEnvironment;	
 	
 	public EnvironmentHandler(MainWindow main) {
 		
@@ -33,12 +30,8 @@ public class EnvironmentHandler implements Runnable {
 	private void changeEnvironments() {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-		  
-		player = new JLabel(main.getPlayer().getIcon());
-		  
-		player.setBounds(main.getPlayer().getLocation().getX(), main.getPlayer().getLocation().getY(), 34, 44);
-		  
-		main.mainpanel.add(player);
+				  
+		main.mainpanel.add(main.getPlayer().getLabel());
 		  
 		for (Tile[] row : array) {
 		   

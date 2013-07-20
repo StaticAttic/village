@@ -1,7 +1,8 @@
 package org.noip.staticattic.entities;
 
-import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
+import org.noip.staticattic.fileUtils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 
 public abstract class Human extends Entity {
@@ -13,8 +14,7 @@ public abstract class Human extends Entity {
 	}
 	
 	private AnimationState state = AnimationState.IDLE;
-	private Environment currentenvironment;
-	private ImageIcon icon;
+	private Environment currentenvironment;	
 	private String name;
 	
 	public void setAnimationState(AnimationState state) {
@@ -45,20 +45,12 @@ public abstract class Human extends Entity {
 		
 		super(xloc, yloc);
 		
-	}
-
-	public ImageIcon getIcon() {
-		
-		return icon;
-		
-	}
-
-	public void setIcon(ImageIcon icon) {
-		
-		this.icon = icon;
-		
-	}
-
+		this.setIcon(TextureHandler.getPlayer());
+					  
+		this.setLabel(new JLabel(this.getIcon()));
+		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 34, 44);
+	}	
+	
 	public String getName() {
 		
 		return name;
