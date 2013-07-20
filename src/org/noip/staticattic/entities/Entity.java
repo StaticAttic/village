@@ -30,7 +30,6 @@ public abstract class Entity {
 		
 		this.location = new Location(xloc, yloc);
 		this.entityID = UUID.randomUUID();
-		this.icon = new ImageIcon();
 		
 	}
 
