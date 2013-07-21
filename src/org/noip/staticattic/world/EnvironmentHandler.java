@@ -51,36 +51,26 @@ public class EnvironmentHandler implements Runnable {
 				
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
-		int x = 0;
-		int y = 0;
-		
+		try {
+			
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()+1][main.getPlayer().getYID()]);
+			main.getPlayer().setXID(main.getPlayer().getXID()+1);
+						
+		} catch (IndexOutOfBoundsException e1) {
+			
+			//swallow - edge of map
+			
+		}
+				
 		for (Tile[] row : array) {
 			
 			for (Tile e : row) {
-				
-				if (e.equals(main.getPlayer().getCurrentTile())) {
-					
-					try {
-						
-						main.getPlayer().setCurrentTile(array[x+1][y]);
-						
-					} catch (IndexOutOfBoundsException e1) {
-						
-						//swallow - edge of map
-						
-					}
-					
-				}
-				
+								
 				e.getLocation().setX(e.getLocation().getX()+34);				
 				e.updatePosition();
-				
-				y++;
-												
+																
 			}
-			
-			x++;
-			
+						
 		}
 		
 		main.repaint();
@@ -91,36 +81,27 @@ public class EnvironmentHandler implements Runnable {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
-		int x = 0;
-		int y = 0;
+		try {
+			
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()-1][main.getPlayer().getYID()]);
+			main.getPlayer().setXID(main.getPlayer().getXID()-1);
+			
+		} catch (IndexOutOfBoundsException e1) {
+			
+			//swallow - edge of map
+			
+		}
 		
 		for (Tile[] row : array) {
 				
 			for (Tile e : row) {
+				
 					
-				if (e.equals(main.getPlayer().getCurrentTile())) {
-					
-					try {
-						
-						main.getPlayer().setCurrentTile(array[x-1][y]);
-						
-					} catch (IndexOutOfBoundsException e1) {
-						
-						//swallow - edge of map
-						
-					}
-					
-				}
 				
 				e.getLocation().setX(e.getLocation().getX()-34);				
 				e.updatePosition();
 				
-				y++;
-				
-			}
-			
-			x++;
-				
+			}			
 		}
 			
 		main.repaint();	
@@ -131,36 +112,25 @@ public class EnvironmentHandler implements Runnable {
 					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
-		int x = 0;
-		int y = 0;
+		try {
+			
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()-1]);
+			main.getPlayer().setYID(main.getPlayer().getYID()-1);
+			
+		} catch (IndexOutOfBoundsException e1) {
+			
+			//swallow - edge of map
+			
+		}
 		
 		for (Tile[] row : array) {
 				
 			for (Tile e : row) {
 				
-				if (e.equals(main.getPlayer().getCurrentTile())) {
-					
-					try {
-						
-						main.getPlayer().setCurrentTile(array[x][y-1]);
-						
-					} catch (IndexOutOfBoundsException e1) {
-						
-						//swallow - edge of map
-						
-					}
-					
-				}
-				
 				e.getLocation().setY(e.getLocation().getY()-34);				
 				e.updatePosition();
 				
-				y++;
-				
-			}
-		
-			x++;
-			
+			}		
 		}
 			
 		main.repaint();	
@@ -171,36 +141,27 @@ public class EnvironmentHandler implements Runnable {
 					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 			
-		int x = 0;
-		int y = 0;
+		try {
+			
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()+1]);
+			main.getPlayer().setYID(main.getPlayer().getYID()+1);
+			
+		} catch (IndexOutOfBoundsException e1) {
+			
+			//swallow - edge of map
+			
+		}
 		
 		for (Tile[] row : array) {
 			
 			for (Tile e : row) {					
 				
-				if (e.equals(main.getPlayer().getCurrentTile())) {
 					
-					try {
-						
-						main.getPlayer().setCurrentTile(array[x][y+1]);
-						
-					} catch (IndexOutOfBoundsException e1) {
-						
-						//swallow - edge of map
-						
-					}
-					
-				}
 				
 				e.getLocation().setY(e.getLocation().getY()+34);				
 				e.updatePosition();
 				
-				y++;
-				
-			}
-			
-			x++;
-				
+			}			
 		}
 			
 		main.repaint();	

@@ -6,8 +6,7 @@ import org.noip.staticattic.fileutils.TextureHandler;
 
 public class Tile extends Inanimate {
 	
-	private Type type = Type.GRASS;
-	
+	private Type type = Type.GRASS;	
 		
 	public enum Type{
 		
@@ -47,5 +46,4 @@ public class Tile extends Inanimate {
 		this.getLabel().setLocation(this.getLocation().getX(), this.getLocation().getY());
 		
 	}
-	
-}
+}	

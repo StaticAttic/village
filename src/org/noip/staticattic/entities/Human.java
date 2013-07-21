@@ -14,6 +14,8 @@ public abstract class Human extends Entity {
 	private Environment currentenvironment;	
 	private String name;
 	private Tile currenttile;
+	private Integer xID;
+	private Integer yID;
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -67,6 +69,22 @@ public abstract class Human extends Entity {
 		
 		this.currenttile = currenttile;
 		
+	}
+
+	public Integer getXID() {
+		return xID;
+	}
+
+	public void setXID(Integer xID) {
+		this.xID = xID;
+	}
+
+	public Integer getYID() {
+		return yID;
+	}
+
+	public void setYID(Integer yID) {
+		this.yID = yID;
 	}
 	
 }
