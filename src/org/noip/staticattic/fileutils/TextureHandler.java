@@ -8,7 +8,10 @@ import javax.swing.ImageIcon;
 public class TextureHandler {
 	
 	private static ImageIcon grass = new ImageIcon();
-	private static ImageIcon player = new ImageIcon();
+	private static ImageIcon playerdown = new ImageIcon();
+	private static ImageIcon playerleft = new ImageIcon();
+	private static ImageIcon playerright = new ImageIcon();
+	private static ImageIcon playerup = new ImageIcon();
 	private static ImageIcon logo = new ImageIcon();
 	private static ImageIcon icon = new ImageIcon();
 	private static ImageIcon companylogo = new ImageIcon();
@@ -30,7 +33,10 @@ public class TextureHandler {
 		try {
 		    
 			grass = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/tiles/grass.fw.png")));
-			player = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude.png")));
+			playerdown = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude.png")));
+			playerleft = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeleft.fw.png")));
+			playerright = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/duderight.fw.png")));
+			playerup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeback.fw.png")));
 			companylogo = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/staticattic.fw.png")));
 			newup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/newgamedefault.fw.png")));
 			newover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/newgameover.fw.png")));
@@ -52,7 +58,10 @@ public class TextureHandler {
 			try {
 		     
 				grass = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png")));
-				player = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
+				playerdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
+				playerleft = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft.fw.png")));
+				playerright = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight.fw.png")));
+				playerup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback.fw.png")));
 				companylogo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/staticattic.fw.png")));
 				newup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/newgamedefault.fw.png")));
 				newover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/newgameover.fw.png")));
@@ -85,9 +94,9 @@ public class TextureHandler {
 		
 	}
 		
-	public static ImageIcon getPlayer() {
+	public static ImageIcon getPlayerDown() {
 		
-		return player;
+		return playerdown;
 		
 	}
 
@@ -178,6 +187,24 @@ public class TextureHandler {
 	public static ImageIcon getExitDown() {
 		
 		return exitdown;
+		
+	}
+
+	public static ImageIcon getPlayerLeft() {
+		
+		return playerleft;
+		
+	}
+
+	public static ImageIcon getPlayerRight() {
+		
+		return playerright;
+		
+	}
+
+	public static ImageIcon getPlayerUp() {
+		
+		return playerup;
 		
 	}
 	

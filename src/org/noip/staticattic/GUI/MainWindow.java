@@ -129,6 +129,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
+			player.setIcon(TextureHandler.getPlayerRight());
+			player.getLabel().setIcon(player.getIcon());
 			ENhandler.moveLeft();
 			
 		}
@@ -141,6 +143,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
+			player.setIcon(TextureHandler.getPlayerLeft());
+			player.getLabel().setIcon(player.getIcon());
 			ENhandler.moveRight();
 			
 		}
@@ -153,6 +157,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
+			player.setIcon(TextureHandler.getPlayerUp());
+			player.getLabel().setIcon(player.getIcon());
 			ENhandler.moveDown();
 			
 		}
@@ -165,6 +171,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
+			player.setIcon(TextureHandler.getPlayerDown());
+			player.getLabel().setIcon(player.getIcon());
 			ENhandler.moveUp();
 			
 		}
