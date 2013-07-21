@@ -22,7 +22,7 @@ public class Environment {
 	
 	public Tile[][] getArray() {
 		
-		return this.array;
+		return this.array;		
 		
 	}
 
