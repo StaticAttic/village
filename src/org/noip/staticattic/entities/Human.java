@@ -16,6 +16,7 @@ public abstract class Human extends Entity {
 	private AnimationState state = AnimationState.IDLE;
 	private Environment currentenvironment;	
 	private String name;
+	private Tile currenttile;
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -61,6 +62,18 @@ public abstract class Human extends Entity {
 	public void setName(String name) {
 		
 		this.name = name;
+		
+	}
+
+	public Tile getCurrentTile() {
+		
+		return currenttile;
+		
+	}
+
+	public void setCurrentTile(Tile currenttile) {
+		
+		this.currenttile = currenttile;
 		
 	}
 	
