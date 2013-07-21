@@ -8,11 +8,11 @@ public class Environment {
 	
 	public Environment() {
 		
-		for (int i = 0; i < 100; i++) {
+		for (int x = 0; x < 100; x++) {
 			
-			for (int x = 0; x < 100; x++) {
+			for (int y = 0; y < 100; y++) {
 				
-				array[i][x] = new Tile(34*i,34*x);
+				array[x][y] = new Tile(34*x,34*y);
 				
 			}
 			
