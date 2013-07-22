@@ -30,18 +30,51 @@ public class EnvironmentHandler implements Runnable {
 	private void changeEnvironments() {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-				  
+		
 		main.mainpanel.add(main.getPlayer().getLabel());
-		  
+		
+		main.getPlayer().getCurrentTile().getLocation().setX(main.getPlayer().getLocation().getX());
+		main.getPlayer().getCurrentTile().getLocation().setY(main.getPlayer().getLocation().getY()+14);
+		
+		main.getPlayer().getCurrentTile().getLabel().setLocation(main.getPlayer().getCurrentTile().getLocation().getX(), main.getPlayer().getCurrentTile().getLocation().getY());
+
+		main.mainpanel.add(main.getPlayer().getCurrentTile().getLabel());
+		
+		int x = 0;
+		int y = 0;
+		
 		for (Tile[] row : array) {
 		   
 			for (Tile e : row) {
-		    
-				main.mainpanel.add(e.getLabel());
+				
+				if (!e.equals(main.getPlayer().getCurrentTile())) {
+				
+					e.getLocation().setX(main.getPlayer().getCurrentTile().getLocation().getX()+((x - main.getPlayer().getXID())*34));
+					e.getLocation().setY(main.getPlayer().getCurrentTile().getLocation().getY()+((y - main.getPlayer().getYID())*34));
+				
+					e.getLabel().setLocation(e.getLocation().getX(), e.getLocation().getY());
+				
+					main.mainpanel.add(e.getLabel());
+				
+				}
+				
+				if (y == row.length) {
+					
+					y = 0;
+					
+				} else {
+					
+					y++;
+					
+				}
 		    
 			}
+			
+			x++;
 		   
 		}
+		
+		System.out.println(main.getPlayer().getXID()+","+main.getPlayer().getYID());
 		  
 		main.repaint();
 		  
