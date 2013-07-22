@@ -143,7 +143,7 @@ public class MainWindow extends JFrame implements ActionListener {
 				player.setAnimationState(AnimationState.WALKING_RIGHT);
 				ENhandler.moveLeft();
 				
-			} else if (!player.getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+			} else if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 				
 				player.setIcon(TextureHandler.getPlayerRight());
 				player.getLabel().setIcon(player.getIcon());
@@ -167,7 +167,7 @@ public class MainWindow extends JFrame implements ActionListener {
 				player.setAnimationState(AnimationState.WALKING_LEFT);
 				ENhandler.moveRight();
 				
-			} else if (!player.getAnimationState().equals(AnimationState.WALKING_LEFT)) {
+			} else if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_RIGHT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 				
 				player.setIcon(TextureHandler.getPlayerLeft());
 				player.getLabel().setIcon(player.getIcon());
@@ -191,7 +191,7 @@ public class MainWindow extends JFrame implements ActionListener {
 				player.setAnimationState(AnimationState.WALKING_UP);
 				ENhandler.moveDown();
 				
-			} else if (!player.getAnimationState().equals(AnimationState.WALKING_UP)) {
+			} else if (player.getAnimationState().equals(AnimationState.IDLE_RIGHT) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 				
 				player.setIcon(TextureHandler.getPlayerUp());
 				player.getLabel().setIcon(player.getIcon());
@@ -215,7 +215,7 @@ public class MainWindow extends JFrame implements ActionListener {
 				player.setAnimationState(AnimationState.WALKING_DOWN);
 				ENhandler.moveUp();
 				
-			} else if (!player.getAnimationState().equals(AnimationState.WALKING_DOWN)) {
+			} else if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 				
 				player.setIcon(TextureHandler.getPlayerDown());
 				player.getLabel().setIcon(player.getIcon());
