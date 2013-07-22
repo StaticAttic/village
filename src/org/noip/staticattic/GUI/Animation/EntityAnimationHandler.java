@@ -36,7 +36,8 @@ public class EntityAnimationHandler implements Runnable {
 			if (e.getDelay() <= 0) {				
 				
 				e.execute();
-				events.remove(e);
+				//events.remove(e);
+				e.setDelay(200);
 				break;
 				
 			} else {
