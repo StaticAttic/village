@@ -73,8 +73,6 @@ public class EnvironmentHandler implements Runnable {
 			x++;
 		   
 		}
-		
-		System.out.println(main.getPlayer().getXID()+","+main.getPlayer().getYID());
 		  
 		main.repaint();
 		  
@@ -84,120 +82,101 @@ public class EnvironmentHandler implements Runnable {
 				
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
-		try {
-			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()+1][main.getPlayer().getYID()]);
-			main.getPlayer().setXID(main.getPlayer().getXID()+1);
-						
-		} catch (IndexOutOfBoundsException e1) {
-			
-			//swallow - edge of map
-			
-		}
-				
-		for (Tile[] row : array) {
-			
-			for (Tile e : row) {
-								
-				e.getLocation().setX(e.getLocation().getX()+34);				
-				e.updatePosition();
-																
-			}
-						
-		}
+		if (main.getPlayer().getXID() > 0) {
 		
-		main.repaint();
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()-1][main.getPlayer().getYID()]);
+			main.getPlayer().setXID(main.getPlayer().getXID()-1);
+						
+			for (Tile[] row : array) {
+			
+				for (Tile e : row) {
+								
+					e.getLocation().setX(e.getLocation().getX()+34);				
+					e.updatePosition();
+																
+				}
+						
+			}
+		
+			main.repaint();
+		
+		} 
 		
 	}
 	
 	public void moveLeft() {			
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-			
-		try {
-			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()-1][main.getPlayer().getYID()]);
-			main.getPlayer().setXID(main.getPlayer().getXID()-1);
-			
-		} catch (IndexOutOfBoundsException e1) {
-			
-			//swallow - edge of map
-			
-		}
 		
-		for (Tile[] row : array) {
-				
-			for (Tile e : row) {
-				
-					
-				
-				e.getLocation().setX(e.getLocation().getX()-34);				
-				e.updatePosition();
-				
-			}			
-		}
+		if (main.getPlayer().getXID() < array.length-1) {
+		
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()+1][main.getPlayer().getYID()]);
+			main.getPlayer().setXID(main.getPlayer().getXID()+1);
 			
-		main.repaint();	
+			for (Tile[] row : array) {
+				
+				for (Tile e : row) {
+				
+					e.getLocation().setX(e.getLocation().getX()-34);				
+					e.updatePosition();
+				
+				}			
+			}
+			
+			main.repaint();	
+		
+		} 
 		
 	}
 	
 	public void moveUp() {
 					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-			
-		try {
-			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()-1]);
-			main.getPlayer().setYID(main.getPlayer().getYID()-1);
-			
-		} catch (IndexOutOfBoundsException e1) {
-			
-			//swallow - edge of map
-			
-		}
 		
-		for (Tile[] row : array) {
-				
-			for (Tile e : row) {
-				
-				e.getLocation().setY(e.getLocation().getY()-34);				
-				e.updatePosition();
-				
-			}		
-		}
+		if (main.getPlayer().getYID() < array.length-1) {
 			
-		main.repaint();	
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()+1]);
+			main.getPlayer().setYID(main.getPlayer().getYID()+1);
+			
+			for (Tile[] row : array) {
+				
+				for (Tile e : row) {
+				
+					e.getLocation().setY(e.getLocation().getY()-34);				
+					e.updatePosition();
+				
+				}		
+			}
+			
+			main.repaint();	
+			
+		}
 		
 	}
 	
 	public void moveDown() {
 					
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-			
-		try {
-			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()+1]);
-			main.getPlayer().setYID(main.getPlayer().getYID()+1);
-			
-		} catch (IndexOutOfBoundsException e1) {
-			
-			//swallow - edge of map
-			
-		}
 		
-		for (Tile[] row : array) {
+		if (main.getPlayer().getYID() > 0) {
 			
-			for (Tile e : row) {					
-				
-					
-				
-				e.getLocation().setY(e.getLocation().getY()+34);				
-				e.updatePosition();
-				
-			}			
-		}
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()-1]);
+			main.getPlayer().setYID(main.getPlayer().getYID()-1);
 			
-		main.repaint();	
+			
+			for (Tile[] row : array) {
+			
+				for (Tile e : row) {					
+
+					e.getLocation().setY(e.getLocation().getY()+34);				
+					e.updatePosition();
+				
+				}			
+			}
+			
+			main.repaint();	
+			
+		} 
 		
 	}
 

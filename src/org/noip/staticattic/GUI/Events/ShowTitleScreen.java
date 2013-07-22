@@ -38,7 +38,7 @@ public class ShowTitleScreen extends GUIEvent {
 		clip.start();
 		
 		JLabel companylogo = new JLabel(TextureHandler.getCompanyLogo());
-		companylogo.setBounds((int)(super.getMain().screensize.getWidth()/2)-250, (int)(super.getMain().screensize.getHeight()/2)-150, 500, 300);
+		companylogo.setBounds((int)(super.getMain().screensize.getWidth()/2)-190, (int)(super.getMain().screensize.getHeight()/2)-119, 380, 238);
 		
 		super.getMain().mainpanel.add(companylogo);
 		super.getMain().repaint();
