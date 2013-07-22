@@ -57,10 +57,19 @@ public class EnvironmentHandler implements Runnable {
 					main.mainpanel.add(e.getLabel());
 				
 				}
+				
+				if (y == array.length-1) {
+					
+					y = 0;
+					
+				} else {
+					
+					y++;
+					
+				}
 		    
 			}
 			
-			y = 0;
 			x++;
 		   
 		}

@@ -95,8 +95,8 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			Tile[][] array = player.getCurrentEnvironment().getArray();
 			player.setCurrentTile(array[5][5]);
-			player.setXID(5);
-			player.setYID(5);			
+			player.setXID(49);
+			player.setYID(49);			
 			
 			mainpanel.removeAll();
 			
