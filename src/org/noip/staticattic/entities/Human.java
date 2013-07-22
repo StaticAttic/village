@@ -21,7 +21,7 @@ public abstract class Human extends Entity {
 	private Integer xID;
 	private Integer yID;
 	private HumanAnimation animationthread;
-	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
+	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);	
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -58,10 +58,10 @@ public abstract class Human extends Entity {
 		super(xloc, yloc);
 		
 		this.setAnimationthread(new HumanAnimation(this, 200));
+					
 		executor.scheduleAtFixedRate(this.getAnimationthread(), 0L, 200L, TimeUnit.MILLISECONDS);
 		
 		executor.shutdown();
-		
 		
 	}	
 	
