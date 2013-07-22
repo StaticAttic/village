@@ -1,28 +1,25 @@
 package org.noip.staticattic.GUI.Animation;
 
-import org.noip.staticattic.GUI.MainWindow;
 import org.noip.staticattic.entities.Human;
 import org.noip.staticattic.entities.Human.AnimationState;
 import org.noip.staticattic.fileutils.TextureHandler;
 
-public class HumanAnimation extends EntityAnimationEvent {
+public class HumanAnimation extends EntityAnimationEvent implements Runnable {
 	
 	private int delay;
 	private Human human;
 	private int count = 0;
-	private MainWindow main;
-
-	public HumanAnimation(MainWindow main, Human human, int delay) {
+	
+	public HumanAnimation(Human human, int delay) {
 		
 		super(human, delay);		
 		this.setDelay(delay);
-		this.setHuman(human);		
-		this.setMain(main);
+		this.setHuman(human);
 		
 	}
 	
 	@Override
-	public void execute() {
+	public void run() {
 		
 		if(this.human.getAnimationState().equals(AnimationState.WALKING_DOWN)) {
 			
@@ -136,13 +133,19 @@ public class HumanAnimation extends EntityAnimationEvent {
 				this.human.setIcon(TextureHandler.getPlayerRight());
 				this.count = 0;
 				
-			}	
+			}
+			
+			else {
+				
+				return;
+				
+			}
 			
 		}
 		
 		this.human.getLabel().setIcon(this.human.getIcon());
 		this.count++;
-		this.main.mainpanel.repaint();
+		//this.main.mainpanel.repaint();
 		
 	}	
 	
@@ -179,18 +182,6 @@ public class HumanAnimation extends EntityAnimationEvent {
 	public void setCount(int count) {
 		
 		this.count = count;
-		
-	}
-
-	public MainWindow getMain() {
-		
-		return main;
-		
-	}
-
-	public void setMain(MainWindow main) {
-		
-		this.main = main;
 		
 	}	
 }

@@ -106,7 +106,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
 			this.EAHandler = new EntityAnimationHandler(this);
-			executor.scheduleAtFixedRate(EAHandler, 0L, 20L, TimeUnit.MILLISECONDS);			
+			executor.scheduleAtFixedRate(EAHandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
 		}
 		

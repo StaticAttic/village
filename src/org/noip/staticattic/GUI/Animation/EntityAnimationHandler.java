@@ -26,7 +26,7 @@ public class EntityAnimationHandler implements Runnable {
 			
 			if (e.getAnimationState().equals(AnimationState.WALKING_LEFT)||e.getAnimationState().equals(AnimationState.WALKING_RIGHT)||e.getAnimationState().equals(AnimationState.WALKING_UP)||e.getAnimationState().equals(AnimationState.WALKING_DOWN)) {
 								
-				events.add(new HumanAnimation(this.main, e, 200));
+				//events.add(new HumanAnimation(this.main, e, 200));
 				
 			}
 		}

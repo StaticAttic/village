@@ -1,5 +1,9 @@
 package org.noip.staticattic.entities;
 
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import org.noip.staticattic.GUI.Animation.HumanAnimation;
 import org.noip.staticattic.world.Environment;
 
 public abstract class Human extends Entity {
@@ -16,6 +20,8 @@ public abstract class Human extends Entity {
 	private Tile currenttile;
 	private Integer xID;
 	private Integer yID;
+	private HumanAnimation animationthread;
+	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -49,7 +55,13 @@ public abstract class Human extends Entity {
 	
 	public Human(int xloc, int yloc) {
 		
-		super(xloc, yloc);		
+		super(xloc, yloc);
+		
+		this.setAnimationthread(new HumanAnimation(this, 200));
+		executor.scheduleAtFixedRate(this.getAnimationthread(), 0L, 200L, TimeUnit.MILLISECONDS);
+		
+		executor.shutdown();
+		
 		
 	}	
 	
@@ -78,19 +90,39 @@ public abstract class Human extends Entity {
 	}
 
 	public Integer getXID() {
+		
 		return xID;
+		
 	}
 
 	public void setXID(Integer xID) {
+		
 		this.xID = xID;
+		
 	}
 
 	public Integer getYID() {
+		
 		return yID;
+		
 	}
 
 	public void setYID(Integer yID) {
+		
 		this.yID = yID;
+		
+	}
+
+	public Runnable getAnimationthread() {
+		
+		return animationthread;
+		
+	}
+
+	public void setAnimationthread(HumanAnimation animationthread) {
+		
+		this.animationthread = animationthread;
+		
 	}
 	
 }
