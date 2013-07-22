@@ -224,97 +224,97 @@ public class TextureHandler {
 		
 	}
 
-	public static ImageIcon getPlayerdown2() {
+	public static ImageIcon getPlayerDown2() {
 		
 		return playerdown2;
 		
 	}
 
-	public static void setPlayerdown2(ImageIcon playerdown2) {
+	public static void setPlayerDown2(ImageIcon playerdown2) {
 		
 		TextureHandler.playerdown2 = playerdown2;
 		
 	}
 
-	public static ImageIcon getPlayerdown3() {
+	public static ImageIcon getPlayerDown3() {
 		
 		return playerdown3;
 		
 	}
 
-	public static void setPlayerdown3(ImageIcon playerdown3) {
+	public static void setPlayerDown3(ImageIcon playerdown3) {
 		
 		TextureHandler.playerdown3 = playerdown3;
 		
 	}
 
-	public static ImageIcon getPlayerleft2() {
+	public static ImageIcon getPlayerLeft2() {
 		
 		return playerleft2;
 		
 	}
 
-	public static void setPlayerleft2(ImageIcon playerleft2) {
+	public static void setPlayerLeft2(ImageIcon playerleft2) {
 		
 		TextureHandler.playerleft2 = playerleft2;
 		
 	}
 
-	public static ImageIcon getPlayerleft3() {
+	public static ImageIcon getPlayerLeft3() {
 		
 		return playerleft3;
 		
 	}
 
-	public static void setPlayerleft3(ImageIcon playerleft3) {
+	public static void setPlayerLeft3(ImageIcon playerleft3) {
 		
 		TextureHandler.playerleft3 = playerleft3;
 		
 	}
 
-	public static ImageIcon getPlayerright2() {
+	public static ImageIcon getPlayerRight2() {
 		
 		return playerright2;
 		
 	}
 
-	public static void setPlayerright2(ImageIcon playerright2) {
+	public static void setPlayerRight2(ImageIcon playerright2) {
 		
 		TextureHandler.playerright2 = playerright2;
 		
 	}
 
-	public static ImageIcon getPlayerright3() {
+	public static ImageIcon getPlayerRight3() {
 		
 		return playerright3;
 		
 	}
 
-	public static void setPlayerright3(ImageIcon playerright3) {
+	public static void setPlayerRight3(ImageIcon playerright3) {
 		
 		TextureHandler.playerright3 = playerright3;
 		
 	}
 
-	public static ImageIcon getPlayerup2() {
+	public static ImageIcon getPlayerUp2() {
 		
 		return playerup2;
 		
 	}
 
-	public static void setPlayerup2(ImageIcon playerup2) {
+	public static void setPlayerUp2(ImageIcon playerup2) {
 		
 		TextureHandler.playerup2 = playerup2;
 		
 	}
 
-	public static ImageIcon getPlayerup3() {
+	public static ImageIcon getPlayerUp3() {
 		
 		return playerup3;
 		
 	}
 
-	public static void setPlayerup3(ImageIcon playerup3) {
+	public static void setPlayerUp3(ImageIcon playerup3) {
 		
 		TextureHandler.playerup3 = playerup3;
 		

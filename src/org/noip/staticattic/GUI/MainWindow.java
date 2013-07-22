@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import org.noip.staticattic.GUI.Animation.EntityAnimationHandler;
 import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
@@ -28,6 +29,7 @@ public class MainWindow extends JFrame implements ActionListener {
 	public Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 	private UIHandler UIhandler = new UIHandler();
+	private EntityAnimationHandler EAHandler;
 	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
 	public JPanel mainpanel;
 	private Player player;
@@ -68,7 +70,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.add(mainpanel);
 		this.setVisible(true);
 
-		executor.scheduleAtFixedRate(UIhandler, 0L, 20L, TimeUnit.MILLISECONDS);
+		executor.scheduleAtFixedRate(UIhandler, 0L, 20L, TimeUnit.MILLISECONDS);		
 		
 		UIhandler.addToQueue(new ShowTitleScreen(this, 0));
 		UIhandler.addToQueue(new ShowMenuScreen(this, 4000));
@@ -103,6 +105,9 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
+			this.EAHandler = new EntityAnimationHandler(this);
+			executor.scheduleAtFixedRate(EAHandler, 0L, 20L, TimeUnit.MILLISECONDS);			
+			
 		}
 		
 	}
@@ -135,10 +140,10 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			if (player.getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 			
-				//player.setAnimationState(AnimationState.WALKING_RIGHT);
+				player.setAnimationState(AnimationState.WALKING_RIGHT);
 				ENhandler.moveLeft();
 				
-			} else {
+			} else if (!player.getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
 				
 				player.setIcon(TextureHandler.getPlayerRight());
 				player.getLabel().setIcon(player.getIcon());
@@ -159,10 +164,10 @@ public class MainWindow extends JFrame implements ActionListener {
 
 			if (player.getAnimationState().equals(AnimationState.IDLE_LEFT)) {
 			
-				//player.setAnimationState(AnimationState.WALKING_LEFT);
+				player.setAnimationState(AnimationState.WALKING_LEFT);
 				ENhandler.moveRight();
 				
-			} else {
+			} else if (!player.getAnimationState().equals(AnimationState.WALKING_LEFT)) {
 				
 				player.setIcon(TextureHandler.getPlayerLeft());
 				player.getLabel().setIcon(player.getIcon());
@@ -183,10 +188,10 @@ public class MainWindow extends JFrame implements ActionListener {
 
 			if (player.getAnimationState().equals(AnimationState.IDLE_UP)) {
 				
-				//player.setAnimationState(AnimationState.WALKING_UP);
+				player.setAnimationState(AnimationState.WALKING_UP);
 				ENhandler.moveDown();
 				
-			} else {
+			} else if (!player.getAnimationState().equals(AnimationState.WALKING_UP)) {
 				
 				player.setIcon(TextureHandler.getPlayerUp());
 				player.getLabel().setIcon(player.getIcon());
@@ -207,10 +212,10 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			if (player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 			
-				//player.setAnimationState(AnimationState.WALKING_DOWN);
+				player.setAnimationState(AnimationState.WALKING_DOWN);
 				ENhandler.moveUp();
 				
-			} else {
+			} else if (!player.getAnimationState().equals(AnimationState.WALKING_DOWN)) {
 				
 				player.setIcon(TextureHandler.getPlayerDown());
 				player.getLabel().setIcon(player.getIcon());

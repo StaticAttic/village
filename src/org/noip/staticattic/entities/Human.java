@@ -45,14 +45,8 @@ public abstract class Human extends Entity {
 		
 		this.currentenvironment.addToHumanArray(this);
 		
-	}
+	}	
 	
-	public Entity getEntity() {
-		
-		return super.getThis();
-		
-	}
-
 	public Human(int xloc, int yloc) {
 		
 		super(xloc, yloc);		

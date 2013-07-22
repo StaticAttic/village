@@ -55,11 +55,5 @@ public abstract class Entity {
 		
 		this.icon = icon;
 		
-	}
-	
-	public Entity getThis() {
-		
-		return this;
-		
-	}
+	}	
 }
