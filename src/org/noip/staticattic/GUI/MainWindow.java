@@ -17,6 +17,7 @@ import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
 import org.noip.staticattic.entities.Tile;
+import org.noip.staticattic.entities.Human.AnimationState;
 import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 import org.noip.staticattic.world.EnvironmentHandler;
@@ -130,10 +131,20 @@ public class MainWindow extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-
-			player.setIcon(TextureHandler.getPlayerRight());
-			player.getLabel().setIcon(player.getIcon());
-			ENhandler.moveLeft();
+			
+			if (player.getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
+			
+				//player.setAnimationState(AnimationState.WALKING_RIGHT);
+				ENhandler.moveLeft();
+				
+			} else {
+				
+				player.setIcon(TextureHandler.getPlayerRight());
+				player.getLabel().setIcon(player.getIcon());
+				
+				player.setAnimationState(AnimationState.IDLE_RIGHT);
+				
+			}
 			
 		}
 	}
@@ -145,9 +156,19 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			player.setIcon(TextureHandler.getPlayerLeft());
-			player.getLabel().setIcon(player.getIcon());
-			ENhandler.moveRight();
+			if (player.getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+			
+				//player.setAnimationState(AnimationState.WALKING_LEFT);
+				ENhandler.moveRight();
+				
+			} else {
+				
+				player.setIcon(TextureHandler.getPlayerLeft());
+				player.getLabel().setIcon(player.getIcon());
+				
+				player.setAnimationState(AnimationState.IDLE_LEFT);
+				
+			}
 			
 		}
 	}
@@ -159,9 +180,19 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			player.setIcon(TextureHandler.getPlayerUp());
-			player.getLabel().setIcon(player.getIcon());
-			ENhandler.moveDown();
+			if (player.getAnimationState().equals(AnimationState.IDLE_UP)) {
+				
+				//player.setAnimationState(AnimationState.WALKING_UP);
+				ENhandler.moveDown();
+				
+			} else {
+				
+				player.setIcon(TextureHandler.getPlayerUp());
+				player.getLabel().setIcon(player.getIcon());
+				
+				player.setAnimationState(AnimationState.IDLE_UP);
+				
+			}
 			
 		}
 	}
@@ -173,9 +204,19 @@ public class MainWindow extends JFrame implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
-			player.setIcon(TextureHandler.getPlayerDown());
-			player.getLabel().setIcon(player.getIcon());
-			ENhandler.moveUp();
+			if (player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
+			
+				//player.setAnimationState(AnimationState.WALKING_DOWN);
+				ENhandler.moveUp();
+				
+			} else {
+				
+				player.setIcon(TextureHandler.getPlayerDown());
+				player.getLabel().setIcon(player.getIcon());
+				
+				player.setAnimationState(AnimationState.IDLE_DOWN);
+				
+			}
 			
 		}
 	}

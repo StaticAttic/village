@@ -6,11 +6,11 @@ public abstract class Human extends Entity {
 
 	public enum AnimationState {
 		
-		IDLE, IDLE_LEFT, IDLE_RIGHT, IDLE_UP, IDLE_DOWN, WALKING_UP, WALKING_LEFT, WALKING_RIGHT, WALKING_DOWN, RUNNING_UP, RUNNING_DOWN, RUNNING_LEFT, RUNNING_RIGHT, FISHING, SWINGING_NET
+		IDLE_LEFT, IDLE_RIGHT, IDLE_UP, IDLE_DOWN, WALKING_UP, WALKING_LEFT, WALKING_RIGHT, WALKING_DOWN, RUNNING_UP, RUNNING_DOWN, RUNNING_LEFT, RUNNING_RIGHT, FISHING, SWINGING_NET
 		
 	}
 	
-	private AnimationState state = AnimationState.IDLE;
+	private AnimationState state = AnimationState.IDLE_DOWN;
 	private Environment currentenvironment;	
 	private String name;
 	private Tile currenttile;
