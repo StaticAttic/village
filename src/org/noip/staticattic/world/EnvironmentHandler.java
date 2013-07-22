@@ -85,7 +85,7 @@ public class EnvironmentHandler implements Runnable {
 		if (main.getPlayer().getXID() > 0) {
 		
 			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()-1][main.getPlayer().getYID()]);
-			main.getPlayer().setXID(main.getPlayer().getXID()-1);
+			main.getPlayer().setXID(main.getPlayer().getXID()-1);			
 						
 			for (Tile[] row : array) {
 			
@@ -162,8 +162,7 @@ public class EnvironmentHandler implements Runnable {
 			
 			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()-1]);
 			main.getPlayer().setYID(main.getPlayer().getYID()-1);
-			
-			
+						
 			for (Tile[] row : array) {
 			
 				for (Tile e : row) {					

@@ -88,10 +88,11 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 		} else if (a.getActionCommand().equals("createcharacter")) {
 			
-			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);
 			ENhandler.setMainEnvironment(new Environment());
+			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);			
 			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
+			player.addToList();
 			
 			Tile[][] array = player.getCurrentEnvironment().getArray();
 			player.setCurrentTile(array[5][5]);

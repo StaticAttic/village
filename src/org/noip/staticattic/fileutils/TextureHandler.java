@@ -27,6 +27,14 @@ public class TextureHandler {
 	private static ImageIcon exitup = new ImageIcon();
 	private static ImageIcon exitover = new ImageIcon();
 	private static ImageIcon exitdown = new ImageIcon();
+	private static ImageIcon playerdown2 = new ImageIcon();
+	private static ImageIcon playerdown3 = new ImageIcon();
+	private static ImageIcon playerleft2 = new ImageIcon();
+	private static ImageIcon playerleft3 = new ImageIcon();
+	private static ImageIcon playerright2 = new ImageIcon();
+	private static ImageIcon playerright3 = new ImageIcon();
+	private static ImageIcon playerup2 = new ImageIcon();
+	private static ImageIcon playerup3 = new ImageIcon();
 	
 	public static void loadAllTextures() {
 		
@@ -77,6 +85,14 @@ public class TextureHandler {
 				exitdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/exitdown.fw.png")));
 				logo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/logo.fw.png")));
 				icon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/icon.png")));
+				playerdown2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude2.png")));
+				playerdown3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude3.png")));
+				playerleft2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft2.png")));
+				playerleft3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft3.png")));
+				playerright2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight2.png")));
+				playerright3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight3.png")));
+				playerup2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback2.png")));
+				playerup3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback3.png")));
 		     
 		    } catch (Exception e2) {
 		     
@@ -207,5 +223,100 @@ public class TextureHandler {
 		return playerup;
 		
 	}
-	
+
+	public static ImageIcon getPlayerdown2() {
+		
+		return playerdown2;
+		
+	}
+
+	public static void setPlayerdown2(ImageIcon playerdown2) {
+		
+		TextureHandler.playerdown2 = playerdown2;
+		
+	}
+
+	public static ImageIcon getPlayerdown3() {
+		
+		return playerdown3;
+		
+	}
+
+	public static void setPlayerdown3(ImageIcon playerdown3) {
+		
+		TextureHandler.playerdown3 = playerdown3;
+		
+	}
+
+	public static ImageIcon getPlayerleft2() {
+		
+		return playerleft2;
+		
+	}
+
+	public static void setPlayerleft2(ImageIcon playerleft2) {
+		
+		TextureHandler.playerleft2 = playerleft2;
+		
+	}
+
+	public static ImageIcon getPlayerleft3() {
+		
+		return playerleft3;
+		
+	}
+
+	public static void setPlayerleft3(ImageIcon playerleft3) {
+		
+		TextureHandler.playerleft3 = playerleft3;
+		
+	}
+
+	public static ImageIcon getPlayerright2() {
+		
+		return playerright2;
+		
+	}
+
+	public static void setPlayerright2(ImageIcon playerright2) {
+		
+		TextureHandler.playerright2 = playerright2;
+		
+	}
+
+	public static ImageIcon getPlayerright3() {
+		
+		return playerright3;
+		
+	}
+
+	public static void setPlayerright3(ImageIcon playerright3) {
+		
+		TextureHandler.playerright3 = playerright3;
+		
+	}
+
+	public static ImageIcon getPlayerup2() {
+		
+		return playerup2;
+		
+	}
+
+	public static void setPlayerup2(ImageIcon playerup2) {
+		
+		TextureHandler.playerup2 = playerup2;
+		
+	}
+
+	public static ImageIcon getPlayerup3() {
+		
+		return playerup3;
+		
+	}
+
+	public static void setPlayerup3(ImageIcon playerup3) {
+		
+		TextureHandler.playerup3 = playerup3;
+		
+	}	
 }
