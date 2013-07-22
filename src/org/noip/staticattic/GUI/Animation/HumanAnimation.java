@@ -192,6 +192,5 @@ public class HumanAnimation extends EntityAnimationEvent {
 		
 		this.main = main;
 		
-	}
-	
+	}	
 }
