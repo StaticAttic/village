@@ -225,7 +225,7 @@ public class AnimationEvent {
 		}
 		
 		count++;
-		System.out.println(count);
+		System.out.println(this.delay);
 		
 	}
 
