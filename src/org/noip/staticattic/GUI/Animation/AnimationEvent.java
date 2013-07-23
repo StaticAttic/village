@@ -6,7 +6,7 @@ import org.noip.staticattic.fileutils.TextureHandler;
 
 public class AnimationEvent {
 	
-	private int delay = 200;
+	private int delay = 100;
 	private int count = 0;
 	private Entity entity;
 	private AnimationState animationstate = AnimationState.IDLE_DOWN;
@@ -81,7 +81,7 @@ public class AnimationEvent {
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
 					entity.setIcon(TextureHandler.getPlayerDown());				
-					count = 0;
+					count = -1;
 					
 				}
 				
@@ -126,7 +126,7 @@ public class AnimationEvent {
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
 					entity.setIcon(TextureHandler.getPlayerUp());				
-					count = 0;
+					count = -1;
 					
 				}
 				
@@ -171,7 +171,7 @@ public class AnimationEvent {
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
 					entity.setIcon(TextureHandler.getPlayerLeft());				
-					count = 0;
+					count = -1;
 					
 				}
 				
@@ -216,7 +216,7 @@ public class AnimationEvent {
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
 					entity.setIcon(TextureHandler.getPlayerRight());
-					count = 0;
+					count = -1;
 					
 				}
 				
@@ -225,7 +225,7 @@ public class AnimationEvent {
 		}
 		
 		count++;
-		System.out.println(this.delay);
+		System.out.println(count);
 		
 	}
 
