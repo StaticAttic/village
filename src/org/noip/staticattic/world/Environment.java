@@ -2,13 +2,13 @@ package org.noip.staticattic.world;
 
 import java.util.ArrayList;
 
-import org.noip.staticattic.entities.Human;
+import org.noip.staticattic.entities.Entity;
 import org.noip.staticattic.entities.Tile;
 
 public class Environment {
 	
 	private Tile[][] array = new Tile[99][99];
-	private ArrayList<Human> humanArray = new ArrayList<Human>();
+	private ArrayList<Entity> entitylist = new ArrayList<Entity>();
 	
 	public Environment() {
 		
@@ -30,18 +30,22 @@ public class Environment {
 		
 	}	
 	
-	public void addToHumanArray(Human e) {
+	public void addToEntityList(Entity e) {
 		
-		this.humanArray.add(e);
+		entitylist.add(e);
 		
 	}
 
-	public ArrayList<Human> getHumanArray() {
-		return humanArray;
+	public ArrayList<Entity> getEntityList() {
+		
+		return entitylist;
+		
 	}
 
-	public void setHumanArray(ArrayList<Human> humanArray) {
-		this.humanArray = humanArray;
+	public void setEntityList(ArrayList<Entity> entitylist) {
+		
+		this.entitylist = entitylist;
+		
 	}
 	
 }

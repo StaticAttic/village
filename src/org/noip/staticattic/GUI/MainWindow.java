@@ -12,13 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import org.noip.staticattic.GUI.Animation.EntityAnimationHandler;
+import org.noip.staticattic.GUI.Animation.AnimationHandler;
 import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
 import org.noip.staticattic.entities.Tile;
-import org.noip.staticattic.entities.Human.AnimationState;
+import org.noip.staticattic.entities.Entity.AnimationState;
 import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 import org.noip.staticattic.world.EnvironmentHandler;
@@ -29,8 +29,8 @@ public class MainWindow extends JFrame implements ActionListener {
 	public Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 	private UIHandler UIhandler = new UIHandler();
-	private EntityAnimationHandler EAHandler;
 	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
+	public AnimationHandler ANhandler = new AnimationHandler(this);
 	public JPanel mainpanel;
 	private Player player;
 	private MainWindow main;
@@ -70,7 +70,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.add(mainpanel);
 		this.setVisible(true);
 
-		executor.scheduleAtFixedRate(UIhandler, 0L, 20L, TimeUnit.MILLISECONDS);		
+		executor.scheduleAtFixedRate(UIhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 		
 		UIhandler.addToQueue(new ShowTitleScreen(this, 0));
 		UIhandler.addToQueue(new ShowMenuScreen(this, 4000));
@@ -94,7 +94,7 @@ public class MainWindow extends JFrame implements ActionListener {
 			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);			
 			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
-			player.addToList();
+			player.getCurrentEnvironment().addToEntityList(player);
 			
 			Tile[][] array = player.getCurrentEnvironment().getArray();
 			player.setCurrentTile(array[5][5]);
@@ -104,9 +104,8 @@ public class MainWindow extends JFrame implements ActionListener {
 			mainpanel.removeAll();
 			
 			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
+			executor.scheduleAtFixedRate(ANhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
-			this.EAHandler = new EntityAnimationHandler(this);
-			executor.scheduleAtFixedRate(EAHandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
 		}
 		

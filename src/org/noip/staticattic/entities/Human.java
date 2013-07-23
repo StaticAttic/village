@@ -1,40 +1,14 @@
 package org.noip.staticattic.entities;
 
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-import org.noip.staticattic.GUI.Animation.HumanAnimation;
 import org.noip.staticattic.world.Environment;
 
 public abstract class Human extends Entity {
 
-	public enum AnimationState {
-		
-		IDLE_LEFT, IDLE_RIGHT, IDLE_UP, IDLE_DOWN, WALKING_UP, WALKING_LEFT, WALKING_RIGHT, WALKING_DOWN, RUNNING_UP, RUNNING_DOWN, RUNNING_LEFT, RUNNING_RIGHT, FISHING, SWINGING_NET
-		
-	}
-	
-	private AnimationState state = AnimationState.IDLE_DOWN;
 	private Environment currentenvironment;	
 	private String name;
 	private Tile currenttile;
 	private Integer xID;
 	private Integer yID;
-	private HumanAnimation animationthread;
-	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
-	private Thread thread = new Thread(this.getAnimationthread());
-	
-	public void setAnimationState(AnimationState state) {
-		
-		this.state = state;
-		
-	}
-	
-	public AnimationState getAnimationState() { 
-		
-		return this.state;
-		
-	}
 	
 	public Environment getCurrentEnvironment() {
 		
@@ -47,32 +21,6 @@ public abstract class Human extends Entity {
 		this.currentenvironment = currentenvironment;
 		
 	}
-	
-	public void addToList() {
-		
-		this.currentenvironment.addToHumanArray(this);
-		
-	}	
-	
-	public Human(int xloc, int yloc) {
-		
-		super(xloc, yloc);
-		
-		this.setAnimationthread(new HumanAnimation(this, 200));		
-					
-		executor.scheduleAtFixedRate(this.getThread(), 0L, 200L, TimeUnit.MILLISECONDS);
-		
-		//synchronized (this.getThread()) {
-			//try {
-				
-				//this.getThread().wait();
-				
-			//} catch (InterruptedException e) {
-				
-				//e.printStackTrace();
-			//}
-		//}				
-	}	
 	
 	public String getName() {
 		
@@ -122,28 +70,10 @@ public abstract class Human extends Entity {
 		
 	}
 
-	public Runnable getAnimationthread() {
+	public Human(int xloc, int yloc) {
 		
-		return animationthread;
+		super(xloc, yloc);
 		
-	}
-
-	public void setAnimationthread(HumanAnimation animationthread) {
-		
-		this.animationthread = animationthread;
-		
-	}
-
-	public Thread getThread() {
-		
-		return thread;
-		
-	}
-
-	public void setThread(Thread thread) {
-		
-		this.thread = thread;
-		
-	}
+	}	
 	
 }
