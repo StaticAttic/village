@@ -21,7 +21,8 @@ public abstract class Human extends Entity {
 	private Integer xID;
 	private Integer yID;
 	private HumanAnimation animationthread;
-	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);	
+	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
+	private Thread thread = new Thread(this.getAnimationthread());
 	
 	public void setAnimationState(AnimationState state) {
 		
@@ -57,12 +58,20 @@ public abstract class Human extends Entity {
 		
 		super(xloc, yloc);
 		
-		this.setAnimationthread(new HumanAnimation(this, 200));
+		this.setAnimationthread(new HumanAnimation(this, 200));		
 					
-		executor.scheduleAtFixedRate(this.getAnimationthread(), 0L, 200L, TimeUnit.MILLISECONDS);
+		executor.scheduleAtFixedRate(this.getThread(), 0L, 200L, TimeUnit.MILLISECONDS);
 		
-		executor.shutdown();
-		
+		//synchronized (this.getThread()) {
+			//try {
+				
+				//this.getThread().wait();
+				
+			//} catch (InterruptedException e) {
+				
+				//e.printStackTrace();
+			//}
+		//}				
 	}	
 	
 	public String getName() {
@@ -122,6 +131,18 @@ public abstract class Human extends Entity {
 	public void setAnimationthread(HumanAnimation animationthread) {
 		
 		this.animationthread = animationthread;
+		
+	}
+
+	public Thread getThread() {
+		
+		return thread;
+		
+	}
+
+	public void setThread(Thread thread) {
+		
+		this.thread = thread;
 		
 	}
 	

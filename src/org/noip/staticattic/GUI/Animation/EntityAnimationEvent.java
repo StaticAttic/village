@@ -2,7 +2,7 @@ package org.noip.staticattic.GUI.Animation;
 
 import org.noip.staticattic.entities.Entity;
 
-public abstract class EntityAnimationEvent {
+public abstract class EntityAnimationEvent extends Thread {
 	
 	private int delay;
 	private Entity entity;
