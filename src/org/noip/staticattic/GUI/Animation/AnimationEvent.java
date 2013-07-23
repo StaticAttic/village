@@ -6,7 +6,7 @@ import org.noip.staticattic.fileutils.TextureHandler;
 
 public class AnimationEvent {
 	
-	private int delay = 100;
+	private int delay = 200;
 	private int count = 0;
 	private Entity entity;
 	private AnimationState animationstate = AnimationState.IDLE_DOWN;

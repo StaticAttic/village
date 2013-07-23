@@ -55,8 +55,12 @@ public class EnvironmentHandler implements Runnable {
 					e.getLocation().setY(main.getPlayer().getCurrentTile().getLocation().getY()+((y - main.getPlayer().getYID())*34));
 				
 					e.getLabel().setLocation(e.getLocation().getX(), e.getLocation().getY());
-				
-					main.mainpanel.add(e.getLabel());
+					
+					if (e.getLocation().getX() >= 0 && e.getLocation().getX() <= main.screensize.getWidth() && e.getLocation().getY() >= 0 && e.getLocation().getY() <= main.screensize.getHeight()) {
+						
+						main.mainpanel.add(e.getLabel());
+						
+					}
 				
 				}
 				
@@ -93,7 +97,7 @@ public class EnvironmentHandler implements Runnable {
 			
 				for (Tile e : row) {
 								
-					e.getLocation().setX(e.getLocation().getX()+34);				
+					e.getLocation().setX(e.getLocation().getX()+34);
 					e.updatePosition();
 																
 				}
@@ -119,7 +123,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				for (Tile e : row) {
 				
-					e.getLocation().setX(e.getLocation().getX()-34);				
+					e.getLocation().setX(e.getLocation().getX()-34);
 					e.updatePosition();
 				
 				}			
@@ -144,7 +148,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				for (Tile e : row) {
 				
-					e.getLocation().setY(e.getLocation().getY()-34);				
+					e.getLocation().setY(e.getLocation().getY()-34);	
 					e.updatePosition();
 				
 				}		
@@ -169,7 +173,7 @@ public class EnvironmentHandler implements Runnable {
 			
 				for (Tile e : row) {					
 
-					e.getLocation().setY(e.getLocation().getY()+34);				
+					e.getLocation().setY(e.getLocation().getY()+34);
 					e.updatePosition();
 				
 				}			

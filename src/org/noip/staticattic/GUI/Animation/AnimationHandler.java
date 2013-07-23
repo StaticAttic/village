@@ -46,7 +46,7 @@ public class AnimationHandler implements Runnable {
 				
 				main.mainpanel.repaint();
 				
-				e.getAnimationEvent().setDelay(100);
+				e.getAnimationEvent().setDelay(200);
 				
 			} else {
 				
