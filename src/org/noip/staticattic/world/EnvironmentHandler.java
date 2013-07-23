@@ -8,6 +8,7 @@ public class EnvironmentHandler implements Runnable {
 	private MainWindow main;
 	private Environment environment = null;
 	private Environment MainEnvironment;	
+	private int xradius, yradius;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
@@ -60,7 +61,7 @@ public class EnvironmentHandler implements Runnable {
 						
 						main.mainpanel.add(e.getLabel());
 						
-					}
+					} 
 				
 				}
 				
@@ -79,7 +80,13 @@ public class EnvironmentHandler implements Runnable {
 			x++;
 		   
 		}
-		  
+		
+		//xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
+		//yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
+		
+		xradius = 5;
+		yradius = 5;
+
 		main.repaint();
 		  
 	}
@@ -96,12 +103,27 @@ public class EnvironmentHandler implements Runnable {
 			for (Tile[] row : array) {
 			
 				for (Tile e : row) {
-								
+					
 					e.getLocation().setX(e.getLocation().getX()+34);
 					e.updatePosition();
 																
 				}
 						
+			}
+			
+			for (int y = 0; y < yradius*2+1; y++) {
+				
+				try {
+					
+					main.mainpanel.add(array[main.getPlayer().getXID() - xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					main.mainpanel.remove(array[main.getPlayer().getXID() + xradius+1][main.getPlayer().getYID() - yradius +y].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
 			}
 		
 			main.repaint();
@@ -125,8 +147,23 @@ public class EnvironmentHandler implements Runnable {
 				
 					e.getLocation().setX(e.getLocation().getX()-34);
 					e.updatePosition();
-				
+					
 				}			
+			}
+			
+			for (int y = 0; y < yradius*2+1; y++) {
+				
+				try {
+					
+					main.mainpanel.add(array[main.getPlayer().getXID() + xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius-1][main.getPlayer().getYID() - yradius +y].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
 			}
 			
 			main.repaint();	
@@ -147,11 +184,26 @@ public class EnvironmentHandler implements Runnable {
 			for (Tile[] row : array) {
 				
 				for (Tile e : row) {
-				
+					
 					e.getLocation().setY(e.getLocation().getY()-34);	
 					e.updatePosition();
 				
 				}		
+			}
+			
+			for (int x = 0; x < xradius*2+1; x++) {
+				
+				try {
+					
+					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius].getLabel());
+					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius -1].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
 			}
 			
 			main.repaint();	
@@ -176,7 +228,23 @@ public class EnvironmentHandler implements Runnable {
 					e.getLocation().setY(e.getLocation().getY()+34);
 					e.updatePosition();
 				
-				}			
+				}
+				
+			}
+			
+			for (int x = 0; x < xradius*2+1; x++) {
+				
+				try {
+					
+					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius].getLabel());
+					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius +1].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
 			}
 			
 			main.repaint();	

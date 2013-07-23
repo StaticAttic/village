@@ -225,7 +225,6 @@ public class AnimationEvent {
 		}
 		
 		count++;
-		System.out.println(count);
 		
 	}
 
