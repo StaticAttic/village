@@ -1,24 +1,21 @@
 package org.noip.staticattic.GUI;
 
 import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-
 import org.noip.staticattic.GUI.Animation.AnimationHandler;
 import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
 import org.noip.staticattic.entities.Tile;
-import org.noip.staticattic.entities.Entity.AnimationState;
 import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 import org.noip.staticattic.world.EnvironmentHandler;
@@ -30,14 +27,11 @@ public class MainWindow extends JFrame implements ActionListener {
 	ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
 	private UIHandler UIhandler = new UIHandler();
 	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
-	public AnimationHandler ANhandler = new AnimationHandler(this);
+	private AnimationHandler ANhandler = new AnimationHandler(this);
 	public JPanel mainpanel;
 	private Player player;
-	private MainWindow main;
 	
 	public MainWindow() {
-		
-		main = this;
 		
 		this.setTitle("Village");
 		this.setUndecorated(true);
@@ -52,20 +46,8 @@ public class MainWindow extends JFrame implements ActionListener {
 		mainpanel.setVisible(true);
 		mainpanel.setLayout(null);
 		
-		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightpressed");
-		mainpanel.getActionMap().put("rightpressed", new RightPressed());
-		
-		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftpressed");
-		mainpanel.getActionMap().put("leftpressed", new LeftPressed());
-		
-		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("UP"), "uppressed");
-		mainpanel.getActionMap().put("uppressed", new UpPressed());
-		
-		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downpressed");
-		mainpanel.getActionMap().put("downpressed", new DownPressed());
-		
-		mainpanel.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"), "escpressed");
-		mainpanel.getActionMap().put("escpressed", new EscPressed());
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.addKeyEventDispatcher(new KeyEventHandler(this));
 		
 		this.add(mainpanel);
 		this.setVisible(true);
@@ -106,7 +88,6 @@ public class MainWindow extends JFrame implements ActionListener {
 			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			executor.scheduleAtFixedRate(ANhandler, 0L, 20L, TimeUnit.MILLISECONDS);
 			
-			
 		}
 		
 	}
@@ -130,113 +111,40 @@ public class MainWindow extends JFrame implements ActionListener {
 		
 	}
 	
-	class RightPressed extends AbstractAction {
-
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			
-			if (player.getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
-			
-				player.setAnimationState(AnimationState.WALKING_RIGHT);
-				ENhandler.moveLeft();
-				
-			} else {//if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-				
-				player.setIcon(TextureHandler.getPlayerRight());
-				player.getLabel().setIcon(player.getIcon());
-				
-				player.setAnimationState(AnimationState.IDLE_RIGHT);
-				
-			}
-			
-		}
+	public EnvironmentHandler getENhandler() {
+		
+		return ENhandler;
+		
 	}
 	
-	class LeftPressed extends AbstractAction {
-
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-
-			if (player.getAnimationState().equals(AnimationState.IDLE_LEFT)) {
-			
-				player.setAnimationState(AnimationState.WALKING_LEFT);
-				ENhandler.moveRight();
-				
-			} else {//if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_RIGHT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-				
-				player.setIcon(TextureHandler.getPlayerLeft());
-				player.getLabel().setIcon(player.getIcon());
-				
-				player.setAnimationState(AnimationState.IDLE_LEFT);
-				
-			}
-			
-		}
+	public void setENhandler(EnvironmentHandler handler) {
+		
+		this.ENhandler = handler;
+		
 	}
 	
-	class UpPressed extends AbstractAction {
-
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-
-			if (player.getAnimationState().equals(AnimationState.IDLE_UP)) {
-				
-				player.setAnimationState(AnimationState.WALKING_UP);
-				ENhandler.moveDown();
-				
-			} else {//if (player.getAnimationState().equals(AnimationState.IDLE_RIGHT) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-				
-				player.setIcon(TextureHandler.getPlayerUp());
-				player.getLabel().setIcon(player.getIcon());
-				
-				player.setAnimationState(AnimationState.IDLE_UP);
-				
-			}
-			
-		}
+	public AnimationHandler getANhandler() {
+		
+		return ANhandler;
+		
 	}
 	
-	class DownPressed extends AbstractAction {
-
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			
-			if (player.getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-			
-				player.setAnimationState(AnimationState.WALKING_DOWN);
-				ENhandler.moveUp();
-				
-			} else {//if (player.getAnimationState().equals(AnimationState.IDLE_UP) || player.getAnimationState().equals(AnimationState.IDLE_LEFT) || player.getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
-				
-				player.setIcon(TextureHandler.getPlayerDown());
-				player.getLabel().setIcon(player.getIcon());
-				
-				player.setAnimationState(AnimationState.IDLE_DOWN);
-				
-			}
-			
-		}
+	public void setANhandler(AnimationHandler handler) {
+		
+		this.ANhandler = handler;
+		
 	}
 	
-	class EscPressed extends AbstractAction {
-
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			
-			UIhandler.purgeQueue();
-			UIhandler.addToQueue(new ShowMenuScreen(main, 0));
-			
-		}
+	public UIHandler getUIhandler() {
+		
+		return UIhandler;
+		
+	}
+	
+	public void setUIhandler(UIHandler handler) {
+		
+		this.UIhandler = handler;
+		
 	}
 	
 }

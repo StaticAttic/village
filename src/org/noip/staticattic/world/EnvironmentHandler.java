@@ -32,7 +32,7 @@ public class EnvironmentHandler implements Runnable {
 		
 		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
 		
-		main.ANhandler.setEntityList(main.getPlayer().getCurrentEnvironment().getEntityList());
+		main.getANhandler().setEntityList(main.getPlayer().getCurrentEnvironment().getEntityList());
 		
 		main.mainpanel.add(main.getPlayer().getLabel());
 		
