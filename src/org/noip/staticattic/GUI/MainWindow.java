@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.noip.staticattic.GUI.Animation.AnimationHandler;
@@ -16,6 +17,7 @@ import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
 import org.noip.staticattic.entities.Tile;
+import org.noip.staticattic.entities.Human.Gender;
 import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
 import org.noip.staticattic.world.EnvironmentHandler;
@@ -28,7 +30,9 @@ public class MainWindow extends JFrame implements ActionListener {
 	private UIHandler UIhandler = new UIHandler();
 	private EnvironmentHandler ENhandler = new EnvironmentHandler(this);
 	private AnimationHandler ANhandler = new AnimationHandler(this);
+	private JCheckBox checkbox;
 	public JPanel mainpanel;
+	private Gender gender = null;
 	private Player player;
 	
 	public MainWindow() {
@@ -70,10 +74,34 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			UIhandler.addToQueue(new ShowCharacterCreationScreen(this, 0));
 			
+		} else if (a.getActionCommand().equals("selectmale")) {
+			
+			gender = Gender.MALE;
+			
+			checkbox = (JCheckBox) mainpanel.getComponent(2);
+			checkbox.setSelected(false);
+			
+		} else if (a.getActionCommand().equals("selectfemale")) {
+			
+			gender = Gender.FEMALE;
+			
+			checkbox = (JCheckBox) mainpanel.getComponent(1);
+			checkbox.setSelected(false);
+			
 		} else if (a.getActionCommand().equals("createcharacter")) {
 			
 			ENhandler.setMainEnvironment(new Environment());
-			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);			
+			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);
+			
+			if (gender.equals(Gender.MALE)) {
+				
+				player.setIcon(TextureHandler.getMPlayerDown());
+				
+			} else {
+				
+				player.setIcon(TextureHandler.getFPlayerDown());
+				
+			}
 			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
 			player.getCurrentEnvironment().addToEntityList(player);

@@ -31,7 +31,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getPlayerRight());
+					main.getPlayer().setIcon(TextureHandler.getMPlayerRight());
 					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
@@ -51,7 +51,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getPlayerLeft());
+					main.getPlayer().setIcon(TextureHandler.getMPlayerLeft());
 					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
@@ -71,7 +71,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getPlayerUp());
+					main.getPlayer().setIcon(TextureHandler.getMPlayerUp());
 					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
@@ -91,7 +91,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getPlayerDown());
+					main.getPlayer().setIcon(TextureHandler.getMPlayerDown());
 					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
@@ -114,22 +114,22 @@ public class KeyEventHandler implements KeyEventDispatcher {
         	if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
     			
     			main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
-    			main.getPlayer().setIcon(TextureHandler.getPlayerRight());
+    			main.getPlayer().setIcon(TextureHandler.getMPlayerRight());
     			
     		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
     			
     			main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
-    			main.getPlayer().setIcon(TextureHandler.getPlayerLeft());
+    			main.getPlayer().setIcon(TextureHandler.getMPlayerLeft());
     			
     		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
     			
     			main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
-    			main.getPlayer().setIcon(TextureHandler.getPlayerUp());
+    			main.getPlayer().setIcon(TextureHandler.getMPlayerUp());
     			
     		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
     			
     			main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
-    			main.getPlayer().setIcon(TextureHandler.getPlayerDown());
+    			main.getPlayer().setIcon(TextureHandler.getMPlayerDown());
     			
     		}
         	

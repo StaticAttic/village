@@ -8,10 +8,11 @@ import javax.swing.ImageIcon;
 public class TextureHandler {
 	
 	private static ImageIcon grass = new ImageIcon();
-	private static ImageIcon playerdown = new ImageIcon();
-	private static ImageIcon playerleft = new ImageIcon();
-	private static ImageIcon playerright = new ImageIcon();
-	private static ImageIcon playerup = new ImageIcon();
+	private static ImageIcon mplayerdown = new ImageIcon();
+	private static ImageIcon fplayerdown = new ImageIcon();
+	private static ImageIcon mplayerleft = new ImageIcon();
+	private static ImageIcon mplayerright = new ImageIcon();
+	private static ImageIcon mplayerup = new ImageIcon();
 	private static ImageIcon logo = new ImageIcon();
 	private static ImageIcon icon = new ImageIcon();
 	private static ImageIcon companylogo = new ImageIcon();
@@ -27,24 +28,28 @@ public class TextureHandler {
 	private static ImageIcon exitup = new ImageIcon();
 	private static ImageIcon exitover = new ImageIcon();
 	private static ImageIcon exitdown = new ImageIcon();
-	private static ImageIcon playerdown2 = new ImageIcon();
-	private static ImageIcon playerdown3 = new ImageIcon();
-	private static ImageIcon playerleft2 = new ImageIcon();
-	private static ImageIcon playerleft3 = new ImageIcon();
-	private static ImageIcon playerright2 = new ImageIcon();
-	private static ImageIcon playerright3 = new ImageIcon();
-	private static ImageIcon playerup2 = new ImageIcon();
-	private static ImageIcon playerup3 = new ImageIcon();
+	private static ImageIcon mplayerdown2 = new ImageIcon();
+	private static ImageIcon mplayerdown3 = new ImageIcon();
+	private static ImageIcon mplayerleft2 = new ImageIcon();
+	private static ImageIcon mplayerleft3 = new ImageIcon();
+	private static ImageIcon mplayerright2 = new ImageIcon();
+	private static ImageIcon mplayerright3 = new ImageIcon();
+	private static ImageIcon mplayerup2 = new ImageIcon();
+	private static ImageIcon mplayerup3 = new ImageIcon();
+	private static ImageIcon mplayerselectionup = new ImageIcon();
+	private static ImageIcon mplayerselectionover = new ImageIcon();
+	private static ImageIcon fplayerselectionup = new ImageIcon();
+	private static ImageIcon fplayerselectionover = new ImageIcon();
 	
 	public static void loadAllTextures() {
 		
 		try {
 		    
 			grass = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/tiles/grass.fw.png")));
-			playerdown = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude.png")));
-			playerleft = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeleft.fw.png")));
-			playerright = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/duderight.fw.png")));
-			playerup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeback.fw.png")));
+			mplayerdown = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude.png")));
+			mplayerleft = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeleft.fw.png")));
+			mplayerright = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/duderight.fw.png")));
+			mplayerup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeback.fw.png")));
 			companylogo = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/staticattic.fw.png")));
 			newup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/newgamedefault.fw.png")));
 			newover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/newgameover.fw.png")));
@@ -66,10 +71,11 @@ public class TextureHandler {
 			try {
 		     
 				grass = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/grass.fw.png")));
-				playerdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
-				playerleft = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft.fw.png")));
-				playerright = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight.fw.png")));
-				playerup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback.fw.png")));
+				mplayerdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude.png")));
+				fplayerdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudette.png")));
+				mplayerleft = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft.fw.png")));
+				mplayerright = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight.fw.png")));
+				mplayerup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback.fw.png")));
 				companylogo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/staticattic.fw.png")));
 				newup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/newgamedefault.fw.png")));
 				newover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/newgameover.fw.png")));
@@ -85,14 +91,18 @@ public class TextureHandler {
 				exitdown = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/exitdown.fw.png")));
 				logo = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/logo.fw.png")));
 				icon = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/icon.png")));
-				playerdown2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude2.png")));
-				playerdown3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude3.png")));
-				playerleft2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft2.png")));
-				playerleft3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft3.png")));
-				playerright2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight2.png")));
-				playerright3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight3.png")));
-				playerup2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback2.png")));
-				playerup3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback3.png")));
+				mplayerdown2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude2.png")));
+				mplayerdown3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dude3.png")));
+				mplayerleft2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft2.png")));
+				mplayerleft3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeleft3.png")));
+				mplayerright2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight2.png")));
+				mplayerright3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/duderight3.png")));
+				mplayerup2 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback2.png")));
+				mplayerup3 = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeback3.png")));
+				mplayerselectionup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeselectionup.fw.png")));
+				mplayerselectionover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeselectionover.fw.png")));
+				fplayerselectionup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudetteselectionup.fw.png")));
+				fplayerselectionover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudetteselectionover.fw.png")));
 		     
 		    } catch (Exception e2) {
 		     
@@ -110,9 +120,15 @@ public class TextureHandler {
 		
 	}
 		
-	public static ImageIcon getPlayerDown() {
+	public static ImageIcon getMPlayerDown() {
 		
-		return playerdown;
+		return mplayerdown;
+		
+	}
+	
+	public static ImageIcon getFPlayerDown() {
+		
+		return fplayerdown;
 		
 	}
 
@@ -206,117 +222,94 @@ public class TextureHandler {
 		
 	}
 
-	public static ImageIcon getPlayerLeft() {
+	public static ImageIcon getMPlayerLeft() {
 		
-		return playerleft;
-		
-	}
-
-	public static ImageIcon getPlayerRight() {
-		
-		return playerright;
+		return mplayerleft;
 		
 	}
 
-	public static ImageIcon getPlayerUp() {
+	public static ImageIcon getMPlayerRight() {
 		
-		return playerup;
-		
-	}
-
-	public static ImageIcon getPlayerDown2() {
-		
-		return playerdown2;
+		return mplayerright;
 		
 	}
 
-	public static void setPlayerDown2(ImageIcon playerdown2) {
+	public static ImageIcon getMPlayerUp() {
 		
-		TextureHandler.playerdown2 = playerdown2;
-		
-	}
-
-	public static ImageIcon getPlayerDown3() {
-		
-		return playerdown3;
+		return mplayerup;
 		
 	}
 
-	public static void setPlayerDown3(ImageIcon playerdown3) {
+	public static ImageIcon getMPlayerDown2() {
 		
-		TextureHandler.playerdown3 = playerdown3;
-		
-	}
-
-	public static ImageIcon getPlayerLeft2() {
-		
-		return playerleft2;
+		return mplayerdown2;
 		
 	}
 
-	public static void setPlayerLeft2(ImageIcon playerleft2) {
+	public static ImageIcon getMPlayerDown3() {
 		
-		TextureHandler.playerleft2 = playerleft2;
-		
-	}
-
-	public static ImageIcon getPlayerLeft3() {
-		
-		return playerleft3;
+		return mplayerdown3;
 		
 	}
 
-	public static void setPlayerLeft3(ImageIcon playerleft3) {
+	public static ImageIcon getMPlayerLeft2() {
 		
-		TextureHandler.playerleft3 = playerleft3;
-		
-	}
-
-	public static ImageIcon getPlayerRight2() {
-		
-		return playerright2;
+		return mplayerleft2;
 		
 	}
 
-	public static void setPlayerRight2(ImageIcon playerright2) {
+	public static ImageIcon getMPlayerLeft3() {
 		
-		TextureHandler.playerright2 = playerright2;
-		
-	}
-
-	public static ImageIcon getPlayerRight3() {
-		
-		return playerright3;
+		return mplayerleft3;
 		
 	}
 
-	public static void setPlayerRight3(ImageIcon playerright3) {
+	public static ImageIcon getMPlayerRight2() {
 		
-		TextureHandler.playerright3 = playerright3;
-		
-	}
-
-	public static ImageIcon getPlayerUp2() {
-		
-		return playerup2;
+		return mplayerright2;
 		
 	}
 
-	public static void setPlayerUp2(ImageIcon playerup2) {
+	public static ImageIcon getMPlayerRight3() {
 		
-		TextureHandler.playerup2 = playerup2;
-		
-	}
-
-	public static ImageIcon getPlayerUp3() {
-		
-		return playerup3;
+		return mplayerright3;
 		
 	}
 
-	public static void setPlayerUp3(ImageIcon playerup3) {
+	public static ImageIcon getMPlayerUp2() {
 		
-		TextureHandler.playerup3 = playerup3;
+		return mplayerup2;
 		
-	}	
+	}
+
+	public static ImageIcon getMPlayerUp3() {
+		
+		return mplayerup3;
+		
+	}
+
+	public static ImageIcon getMPlayerSelectionUp() {
+		
+		return mplayerselectionup;
+
+	}
+
+	public static ImageIcon getMPlayerSelectionOver() {
+		
+		return mplayerselectionover;
+		
+	}
+
+	public static ImageIcon getFPlayerSelectionUp() {
+		
+		return fplayerselectionup;
+		
+	}
+
+	public static ImageIcon getFPlayerSelectionOver() {
+		
+		return fplayerselectionover;
+		
+	}
+
 }

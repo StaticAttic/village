@@ -9,6 +9,13 @@ public abstract class Human extends Entity {
 	private Tile currenttile;
 	private Integer xID;
 	private Integer yID;
+	private Gender gender;
+	
+	public enum Gender {
+		
+		MALE, FEMALE
+		
+	}
 	
 	public Environment getCurrentEnvironment() {
 		
@@ -69,11 +76,23 @@ public abstract class Human extends Entity {
 		this.yID = yID;
 		
 	}
+	
+	public Gender getGender() {
+		
+		return gender;
+		
+	}
+
+	public void setGender(Gender gender) {
+		
+		this.gender = gender;
+		
+	}	
 
 	public Human(int xloc, int yloc) {
 		
 		super(xloc, yloc);
 		
-	}	
+	}
 	
 }

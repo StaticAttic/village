@@ -50,7 +50,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerDown2());
+					entity.setIcon(TextureHandler.getMPlayerDown2());
 					
 				}
 				
@@ -60,7 +60,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerDown());
+					entity.setIcon(TextureHandler.getMPlayerDown());
 					
 				}
 				
@@ -70,7 +70,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerDown3());
+					entity.setIcon(TextureHandler.getMPlayerDown3());
 					
 				}
 				
@@ -80,7 +80,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerDown());				
+					entity.setIcon(TextureHandler.getMPlayerDown());				
 					count = -1;
 					
 				}
@@ -95,7 +95,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerUp2());
+					entity.setIcon(TextureHandler.getMPlayerUp2());
 					
 				}
 				
@@ -105,7 +105,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerUp());
+					entity.setIcon(TextureHandler.getMPlayerUp());
 					
 				}
 				
@@ -115,7 +115,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerUp3());
+					entity.setIcon(TextureHandler.getMPlayerUp3());
 					
 				}
 				
@@ -125,7 +125,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerUp());				
+					entity.setIcon(TextureHandler.getMPlayerUp());				
 					count = -1;
 					
 				}
@@ -140,7 +140,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerLeft2());
+					entity.setIcon(TextureHandler.getMPlayerLeft2());
 					
 				}
 				
@@ -150,7 +150,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerLeft());
+					entity.setIcon(TextureHandler.getMPlayerLeft());
 					
 				}
 				
@@ -160,7 +160,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerLeft3());
+					entity.setIcon(TextureHandler.getMPlayerLeft3());
 					
 				}
 				
@@ -170,7 +170,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerLeft());				
+					entity.setIcon(TextureHandler.getMPlayerLeft());				
 					count = -1;
 					
 				}
@@ -185,7 +185,7 @@ public class AnimationEvent {
 						
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerRight2());
+					entity.setIcon(TextureHandler.getMPlayerRight2());
 					
 				}
 				
@@ -195,7 +195,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerRight());
+					entity.setIcon(TextureHandler.getMPlayerRight());
 					
 				}
 				
@@ -205,7 +205,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerRight3());
+					entity.setIcon(TextureHandler.getMPlayerRight3());
 					
 				}
 				
@@ -215,7 +215,7 @@ public class AnimationEvent {
 				
 				if (entity.getClass().getSimpleName().equals("Player")) {
 					
-					entity.setIcon(TextureHandler.getPlayerRight());
+					entity.setIcon(TextureHandler.getMPlayerRight());
 					count = -1;
 					
 				}
