@@ -113,6 +113,15 @@ public class EnvironmentHandler implements Runnable {
 				try {
 					
 					main.mainpanel.add(array[main.getPlayer().getXID() - xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
+				try {
+					
 					main.mainpanel.remove(array[main.getPlayer().getXID() + xradius+1][main.getPlayer().getYID() - yradius +y].getLabel());
 					
 				} catch (Exception e) {
@@ -153,6 +162,15 @@ public class EnvironmentHandler implements Runnable {
 				try {
 					
 					main.mainpanel.add(array[main.getPlayer().getXID() + xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
+				try {
+					
 					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius-1][main.getPlayer().getYID() - yradius +y].getLabel());
 					
 				} catch (Exception e) {
@@ -193,6 +211,15 @@ public class EnvironmentHandler implements Runnable {
 				try {
 					
 					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
+				try {
+					
 					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius -1].getLabel());
 					
 				} catch (Exception e) {
@@ -234,6 +261,15 @@ public class EnvironmentHandler implements Runnable {
 				try {
 					
 					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius].getLabel());
+					
+				} catch (Exception e) {
+					
+					//outside of map
+					
+				}
+				
+				try {
+					
 					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius +1].getLabel());
 					
 				} catch (Exception e) {
