@@ -43,6 +43,12 @@ public class EnvironmentHandler implements Runnable {
 
 		main.mainpanel.add(main.getPlayer().getCurrentTile().getLabel());
 		
+		//xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
+		//yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
+		
+		xradius = 5;
+		yradius = 5;
+		
 		int x = 0;
 		int y = 0;
 		
@@ -57,11 +63,13 @@ public class EnvironmentHandler implements Runnable {
 				
 					e.getLabel().setLocation(e.getLocation().getX(), e.getLocation().getY());
 					
-					if (e.getLocation().getX() >= 0 && e.getLocation().getX() <= main.screensize.getWidth() && e.getLocation().getY() >= 0 && e.getLocation().getY() <= main.screensize.getHeight()) {
+					if ((x < main.getPlayer().getXID() - xradius || x > main.getPlayer().getXID() + xradius) || (y < main.getPlayer().getYID() - yradius || y > main.getPlayer().getYID() + yradius)) {
 						
-						main.mainpanel.add(e.getLabel());
+						e.getLabel().setVisible(false);
 						
-					} 
+					}
+					
+					main.mainpanel.add(e.getLabel());
 				
 				}
 				
@@ -81,9 +89,6 @@ public class EnvironmentHandler implements Runnable {
 		   
 		}
 		
-		xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
-		yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
-
 		main.repaint();
 		  
 	}
@@ -112,7 +117,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.add(array[main.getPlayer().getXID() - xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					array[main.getPlayer().getXID() - xradius][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(true);
 					
 				} catch (Exception e) {
 					
@@ -122,7 +127,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.remove(array[main.getPlayer().getXID() + xradius+1][main.getPlayer().getYID() - yradius +y].getLabel());
+					array[main.getPlayer().getXID() + xradius+1][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(false);
 					
 				} catch (Exception e) {
 					
@@ -161,7 +166,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.add(array[main.getPlayer().getXID() + xradius][main.getPlayer().getYID() - yradius +y].getLabel());
+					array[main.getPlayer().getXID() + xradius][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(true);
 					
 				} catch (Exception e) {
 					
@@ -171,7 +176,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius-1][main.getPlayer().getYID() - yradius +y].getLabel());
+					array[main.getPlayer().getXID() - xradius-1][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(false);
 					
 				} catch (Exception e) {
 					
@@ -210,7 +215,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius].getLabel());
+					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius].getLabel().setVisible(true);
 					
 				} catch (Exception e) {
 					
@@ -220,7 +225,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius -1].getLabel());
+					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius -1].getLabel().setVisible(false);
 					
 				} catch (Exception e) {
 					
@@ -260,7 +265,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.add(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius].getLabel());
+					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius].getLabel().setVisible(true);
 					
 				} catch (Exception e) {
 					
@@ -270,7 +275,7 @@ public class EnvironmentHandler implements Runnable {
 				
 				try {
 					
-					main.mainpanel.remove(array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius +1].getLabel());
+					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius +1].getLabel().setVisible(false);
 					
 				} catch (Exception e) {
 					
