@@ -43,11 +43,8 @@ public class EnvironmentHandler implements Runnable {
 
 		main.mainpanel.add(main.getPlayer().getCurrentTile().getLabel());
 		
-		//xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
-		//yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
-		
-		xradius = 5;
-		yradius = 5;
+		xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
+		yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
 		
 		int x = 0;
 		int y = 0;
