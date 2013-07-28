@@ -19,7 +19,7 @@ public class EnvironmentHandler implements Runnable {
 		this.main = main;
 		
 		xradius = (int) (((main.screensize.width/34)/2));
-		yradius = (int) (((main.screensize.height/34)/2));
+		yradius = (int) (((main.screensize.height/34)/2)+1);
 		
 		onscreenarray = new JLabel[(xradius*2)+1][(yradius*2)+1];
 		
