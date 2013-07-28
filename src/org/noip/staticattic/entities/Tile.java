@@ -1,7 +1,5 @@
 package org.noip.staticattic.entities;
 
-import javax.swing.JLabel;
-
 import org.noip.staticattic.fileutils.TextureHandler;
 
 public class Tile extends Inanimate {
@@ -24,9 +22,6 @@ public class Tile extends Inanimate {
 			   
 	    }
 			  
-		this.setLabel(new JLabel(this.getIcon()));
-		this.getLabel().setBounds(this.getLocation().getX(), this.getLocation().getY(), 34, 34);
-		
 	}
 	
 	public Type getType() {
@@ -40,10 +35,5 @@ public class Tile extends Inanimate {
 		this.type = type;
 		
 	}
-	
-	public void updatePosition(){
-		
-		this.getLabel().setLocation(this.getLocation().getX(), this.getLocation().getY());
-		
-	}
+
 }	

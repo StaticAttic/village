@@ -1,5 +1,7 @@
 package org.noip.staticattic.world;
 
+import javax.swing.JLabel;
+
 import org.noip.staticattic.GUI.MainWindow;
 import org.noip.staticattic.entities.Tile;
 
@@ -9,10 +11,17 @@ public class EnvironmentHandler implements Runnable {
 	private Environment environment = null;
 	private Environment MainEnvironment;	
 	private int xradius, yradius;
+	private JLabel[][] onscreenarray;
+	private Tile[][] array;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
 		this.main = main;
+		
+		xradius = (int) (((main.screensize.width/34)/2));
+		yradius = (int) (((main.screensize.height/34)/2));
+		
+		onscreenarray = new JLabel[(xradius*2)+1][(yradius*2)+1];
 		
 	}
 	
@@ -30,60 +39,35 @@ public class EnvironmentHandler implements Runnable {
 	
 	private void changeEnvironments() {
 		
-		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+		array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);
 		
 		main.getANhandler().setEntityList(main.getPlayer().getCurrentEnvironment().getEntityList());
 		
 		main.mainpanel.add(main.getPlayer().getLabel());
-		
-		main.getPlayer().getCurrentTile().getLocation().setX(main.getPlayer().getLocation().getX());
-		main.getPlayer().getCurrentTile().getLocation().setY(main.getPlayer().getLocation().getY()+14);
-		
-		main.getPlayer().getCurrentTile().getLabel().setLocation(main.getPlayer().getCurrentTile().getLocation().getX(), main.getPlayer().getCurrentTile().getLocation().getY());
-
-		main.mainpanel.add(main.getPlayer().getCurrentTile().getLabel());
-		
-		xradius = (int) ((main.screensize.getWidth() - main.getPlayer().getLocation().getX())/34);
-		yradius = (int) ((main.screensize.getHeight() - main.getPlayer().getLocation().getY())/34);
-		
-		int x = 0;
-		int y = 0;
-		
-		for (Tile[] row : array) {
-		   
-			for (Tile e : row) {
 				
-				if (!e.equals(main.getPlayer().getCurrentTile())) {
+		for (int x = 0; x < (xradius*2)+1; x++) {
+			
+			for (int y = 0; y < (yradius*2)+1; y++) {
 				
-					e.getLocation().setX(main.getPlayer().getCurrentTile().getLocation().getX()+((x - main.getPlayer().getXID())*34));
-					e.getLocation().setY(main.getPlayer().getCurrentTile().getLocation().getY()+((y - main.getPlayer().getYID())*34));
+				onscreenarray[x][y] = new JLabel();
+				onscreenarray[x][y].setBounds(main.getPlayer().getLabel().getLocation().x-(xradius*34)+(34*x), main.getPlayer().getLabel().getLocation().y-(yradius*34)+(34*y)+14, 34, 34);
 				
-					e.getLabel().setLocation(e.getLocation().getX(), e.getLocation().getY());
+				try {
 					
-					if ((x < main.getPlayer().getXID() - xradius || x > main.getPlayer().getXID() + xradius) || (y < main.getPlayer().getYID() - yradius || y > main.getPlayer().getYID() + yradius)) {
-						
-						e.getLabel().setVisible(false);
-						
-					}
+					onscreenarray[x][y].setIcon(array[main.getPlayer().getLocation().getX()-xradius+x][main.getPlayer().getLocation().getY()-yradius+y].getIcon());
 					
-					main.mainpanel.add(e.getLabel());
-				
+				} catch (Exception e) {
+					
+					//swallow - outside of map;
+					
 				}
 				
-				if (y == array.length-1) {
-					
-					y = 0;
-					
-				} else {
-					
-					y++;
-					
-				}
-		    
+				main.mainpanel.add(onscreenarray[x][y]);
+				
 			}
 			
-			x++;
-		   
 		}
 		
 		main.repaint();
@@ -91,200 +75,85 @@ public class EnvironmentHandler implements Runnable {
 	}
 	
 	public void moveRight() {
-				
-		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getXID() > 0) {
-		
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()-1][main.getPlayer().getYID()]);
-			main.getPlayer().setXID(main.getPlayer().getXID()-1);			
-						
-			for (Tile[] row : array) {
 			
-				for (Tile e : row) {
-					
-					e.getLocation().setX(e.getLocation().getX()+34);
-					e.updatePosition();
-																
-				}
-						
-			}
+		array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		if (main.getPlayer().getLocation().getX() > 0) {
 			
-			for (int y = 0; y < yradius*2+1; y++) {
-				
-				try {
-					
-					array[main.getPlayer().getXID() - xradius][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(true);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-				try {
-					
-					array[main.getPlayer().getXID() + xradius+1][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(false);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-			}
+			main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()-1);
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
 		
-			main.repaint();
-		
-		} 
-		
-	}
-	
-	public void moveLeft() {			
-		
-		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getXID() < array.length-1) {
-		
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()+1][main.getPlayer().getYID()]);
-			main.getPlayer().setXID(main.getPlayer().getXID()+1);
-			
-			for (Tile[] row : array) {
-				
-				for (Tile e : row) {
-				
-					e.getLocation().setX(e.getLocation().getX()-34);
-					e.updatePosition();
-					
-				}			
-			}
-			
-			for (int y = 0; y < yradius*2+1; y++) {
-				
-				try {
-					
-					array[main.getPlayer().getXID() + xradius][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(true);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-				try {
-					
-					array[main.getPlayer().getXID() - xradius-1][main.getPlayer().getYID() - yradius +y].getLabel().setVisible(false);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-			}
-			
-			main.repaint();	
-		
-		} 
-		
-	}
-	
-	public void moveUp() {
-					
-		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getYID() < array.length-1) {
-			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()+1]);
-			main.getPlayer().setYID(main.getPlayer().getYID()+1);
-			
-			for (Tile[] row : array) {
-				
-				for (Tile e : row) {
-					
-					e.getLocation().setY(e.getLocation().getY()-34);	
-					e.updatePosition();
-				
-				}		
-			}
-			
-			for (int x = 0; x < xradius*2+1; x++) {
-				
-				try {
-					
-					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius].getLabel().setVisible(true);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-				try {
-					
-					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius -1].getLabel().setVisible(false);
-					
-				} catch (Exception e) {
-					
-					//outside of map
-					
-				}
-				
-			}
-			
-			main.repaint();	
+			updateEnvironment();
 			
 		}
 		
 	}
 	
+	public void moveLeft() {			
+		
+		array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		if (main.getPlayer().getLocation().getX() < array.length-1) {
+			
+			main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()+1);
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
+		
+			updateEnvironment();
+			
+		}
+		
+	}
+	
+	public void moveUp() {
+					
+		array = main.getPlayer().getCurrentEnvironment().getArray();
+		
+		if (main.getPlayer().getLocation().getY() < array.length-1) {
+			
+			main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()+1);
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
+		
+			updateEnvironment();
+			
+		}
+	}
+	
 	public void moveDown() {
 					
-		Tile[][] array = main.getPlayer().getCurrentEnvironment().getArray();
+		array = main.getPlayer().getCurrentEnvironment().getArray();
 		
-		if (main.getPlayer().getYID() > 0) {
+		if (main.getPlayer().getLocation().getY() > 0) {
 			
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getXID()][main.getPlayer().getYID()-1]);
-			main.getPlayer().setYID(main.getPlayer().getYID()-1);
-						
-			for (Tile[] row : array) {
+			main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()-1);
+			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
+		
+			updateEnvironment();
 			
-				for (Tile e : row) {					
-
-					e.getLocation().setY(e.getLocation().getY()+34);
-					e.updatePosition();
-				
-				}
-				
-			}
+		}
+		
+	}
+	
+	private void updateEnvironment() {
+		
+		for (int x = 0; x < (xradius*2)+1; x++) {
 			
-			for (int x = 0; x < xradius*2+1; x++) {
+			for (int y = 0; y < (yradius*2)+1; y++) {
 				
 				try {
 					
-					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() - yradius].getLabel().setVisible(true);
+					onscreenarray[x][y].setIcon(array[main.getPlayer().getLocation().getX()-xradius+x][main.getPlayer().getLocation().getY()-yradius+y].getIcon());
 					
 				} catch (Exception e) {
 					
-					//outside of map
-					
-				}
-				
-				try {
-					
-					array[main.getPlayer().getXID() - xradius +x][main.getPlayer().getYID() + yradius +1].getLabel().setVisible(false);
-					
-				} catch (Exception e) {
-					
-					//outside of map
+					onscreenarray[x][y].setIcon(null);
 					
 				}
 				
 			}
 			
-			main.repaint();	
-			
-		} 
+		}
+		
+		main.repaint();
 		
 	}
 

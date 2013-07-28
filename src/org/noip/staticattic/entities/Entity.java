@@ -3,7 +3,6 @@ package org.noip.staticattic.entities;
 import java.util.UUID;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import org.noip.staticattic.GUI.Animation.AnimationEvent;
 import org.noip.staticattic.location.Location;
@@ -13,8 +12,7 @@ public abstract class Entity {
 	private Location location;
 	private final UUID entityID;
 	private AnimationEvent animationevent;
-	private ImageIcon icon;
-	private JLabel label;	
+	private ImageIcon icon;	
 	
 	public enum AnimationState {
 		
@@ -33,18 +31,6 @@ public abstract class Entity {
 	public Location getLocation() {
 		
 		return this.location;
-		
-	}
-
-	public JLabel getLabel() {
-		
-		return label;
-		
-	}
-
-	public void setLabel(JLabel label) {
-		
-		this.label = label;
 		
 	}
 

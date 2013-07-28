@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.noip.staticattic.GUI.MainWindow;
 import org.noip.staticattic.entities.Entity;
+import org.noip.staticattic.entities.Human;
 
 public class AnimationHandler implements Runnable {
 	
@@ -42,7 +43,7 @@ public class AnimationHandler implements Runnable {
 				
 				e.getAnimationEvent().execute();
 				
-				e.getLabel().setIcon(e.getIcon());
+				((Human) e).getLabel().setIcon(e.getIcon());
 				
 				main.mainpanel.repaint();
 				

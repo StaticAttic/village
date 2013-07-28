@@ -16,7 +16,6 @@ import org.noip.staticattic.GUI.Events.ShowCharacterCreationScreen;
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.GUI.Events.ShowTitleScreen;
 import org.noip.staticattic.entities.Player;
-import org.noip.staticattic.entities.Tile;
 import org.noip.staticattic.entities.Human.Gender;
 import org.noip.staticattic.fileutils.TextureHandler;
 import org.noip.staticattic.world.Environment;
@@ -91,7 +90,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		} else if (a.getActionCommand().equals("createcharacter")) {
 			
 			ENhandler.setMainEnvironment(new Environment());
-			player = new Player((int)(screensize.getWidth()/2)-17, (int)(screensize.getHeight()/2)-22);
+			player = new Player(5,5);
 			
 			if (gender.equals(Gender.MALE)) {
 				
@@ -105,11 +104,6 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			player.setCurrentEnvironment(ENhandler.getMainEnvironment());
 			player.getCurrentEnvironment().addToEntityList(player);
-			
-			Tile[][] array = player.getCurrentEnvironment().getArray();
-			player.setCurrentTile(array[5][5]);
-			player.setXID(5);
-			player.setYID(5);			
 			
 			mainpanel.removeAll();
 			

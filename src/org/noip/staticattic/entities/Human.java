@@ -1,5 +1,7 @@
 package org.noip.staticattic.entities;
 
+import javax.swing.JLabel;
+
 import org.noip.staticattic.world.Environment;
 
 public abstract class Human extends Entity {
@@ -7,9 +9,8 @@ public abstract class Human extends Entity {
 	private Environment currentenvironment;	
 	private String name;
 	private Tile currenttile;
-	private Integer xID;
-	private Integer yID;
 	private Gender gender;
+	private JLabel label;
 	
 	public enum Gender {
 		
@@ -20,6 +21,18 @@ public abstract class Human extends Entity {
 	public Environment getCurrentEnvironment() {
 		
 		return currentenvironment;
+		
+	}
+	
+	public JLabel getLabel() {
+		
+		return label;
+		
+	}
+
+	public void setLabel(JLabel label) {
+		
+		this.label = label;
 		
 	}
 
@@ -49,34 +62,12 @@ public abstract class Human extends Entity {
 
 	public void setCurrentTile(Tile currenttile) {
 		
+		this.getLocation().setX(currenttile.getLocation().getX());
+		this.getLocation().setY(currenttile.getLocation().getY());
 		this.currenttile = currenttile;
 		
 	}
 
-	public Integer getXID() {
-		
-		return xID;
-		
-	}
-
-	public void setXID(Integer xID) {
-		
-		this.xID = xID;
-		
-	}
-
-	public Integer getYID() {
-		
-		return yID;
-		
-	}
-
-	public void setYID(Integer yID) {
-		
-		this.yID = yID;
-		
-	}
-	
 	public Gender getGender() {
 		
 		return gender;
