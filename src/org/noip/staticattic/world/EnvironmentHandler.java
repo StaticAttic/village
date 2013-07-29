@@ -103,6 +103,8 @@ public class EnvironmentHandler implements Runnable {
 		if (count >= 17) {
 			
 			array = main.getPlayer().getCurrentEnvironment().getArray();
+			
+			System.out.println(main.getPlayer().getLocation().getLocation());
 				
 			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
 					
@@ -214,6 +216,7 @@ public class EnvironmentHandler implements Runnable {
 				try {
 					
 					onscreenarray[x][y].setIcon(array[main.getPlayer().getLocation().getX()-xradius+x][main.getPlayer().getLocation().getY()-yradius+y].getIcon());
+					onscreenarray[x][y].setDoubleBuffered(true);
 					
 				} catch (Exception e) {
 					
