@@ -65,6 +65,18 @@ public class TextureHandler {
 			exitdown = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/exitdown.fw.png")));
 			logo = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/logo.fw.png")));
 			icon = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/icon.png")));
+			mplayerdown2 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude2.png")));
+			mplayerdown3 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dude3.png")));
+			mplayerleft2 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeleft2.png")));
+			mplayerleft3 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeleft3.png")));
+			mplayerright2 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/duderight2.png")));
+			mplayerright3 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/duderight3.png")));
+			mplayerup2 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeback2.png")));
+			mplayerup3 = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudeback3.png")));
+			mplayerselectionup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/dudeselectionup.fw.png")));
+			mplayerselectionover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/dudeselectionover.fw.png")));
+			fplayerselectionup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudetteselectionup.fw.png")));
+			fplayerselectionover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/dudetteselectionover.fw.png")));
 		    
 		} catch (Exception e1) {
 		    
