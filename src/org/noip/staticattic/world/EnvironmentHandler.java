@@ -15,6 +15,7 @@ public class EnvironmentHandler implements Runnable {
 	private JLabel[][] onscreenarray;
 	private Tile[][] array;
 	private int count = 0;
+	private boolean moving = false;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
@@ -39,6 +40,8 @@ public class EnvironmentHandler implements Runnable {
 				
 		if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
 			
+			setMoving(true);
+			
 			for (JLabel[] jarray : onscreenarray) {
 				
 				for (JLabel j : jarray) {
@@ -47,19 +50,19 @@ public class EnvironmentHandler implements Runnable {
 						
 						if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
 							
-							j.setLocation(j.getLocation().x+1, j.getLocation().y);
+							j.setLocation(j.getLocation().x+2, j.getLocation().y);
 							
 						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
 							
-							j.setLocation(j.getLocation().x-1, j.getLocation().y);
+							j.setLocation(j.getLocation().x-2, j.getLocation().y);
 							
 						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
 							
-							j.setLocation(j.getLocation().x, j.getLocation().y-1);
+							j.setLocation(j.getLocation().x, j.getLocation().y-2);
 							
 						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) && main.getPlayer().getLocation().getY() > 0) {
 						
-							j.setLocation(j.getLocation().x, j.getLocation().y+1);
+							j.setLocation(j.getLocation().x, j.getLocation().y+2);
 							
 						} else {
 								
@@ -97,7 +100,7 @@ public class EnvironmentHandler implements Runnable {
 			
 		} 
 		
-		if (count >= 34) {
+		if (count >= 17) {
 			
 			array = main.getPlayer().getCurrentEnvironment().getArray();
 				
@@ -185,6 +188,8 @@ public class EnvironmentHandler implements Runnable {
 				
 			count = 0;
 			
+			setMoving(false);
+			
 		}
 		
 	}
@@ -257,6 +262,18 @@ public class EnvironmentHandler implements Runnable {
 	public void setMainEnvironment(Environment mainEnvironment) {
 		
 		MainEnvironment = mainEnvironment;
+		
+	}
+
+	public boolean isMoving() {
+		
+		return moving;
+		
+	}
+
+	public void setMoving(boolean moving) {
+		
+		this.moving = moving;
 		
 	}
 

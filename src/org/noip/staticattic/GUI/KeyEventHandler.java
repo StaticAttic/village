@@ -24,7 +24,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 			
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				
-				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
+				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_RIGHT);
 					
@@ -39,7 +39,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				
-				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_LEFT);
 					
@@ -54,7 +54,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_UP) {
 				
-				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP)) {
+				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_UP);
 					
@@ -69,7 +69,7 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				
-				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
+				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_DOWN);
 					
