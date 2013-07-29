@@ -3,6 +3,7 @@ package org.noip.staticattic.world;
 import javax.swing.JLabel;
 
 import org.noip.staticattic.GUI.MainWindow;
+import org.noip.staticattic.entities.Entity.AnimationState;
 import org.noip.staticattic.entities.Tile;
 
 public class EnvironmentHandler implements Runnable {
@@ -13,12 +14,13 @@ public class EnvironmentHandler implements Runnable {
 	private int xradius, yradius;
 	private JLabel[][] onscreenarray;
 	private Tile[][] array;
+	private int count = 0;
 	
 	public EnvironmentHandler(MainWindow main) {
 		
 		this.main = main;
 		
-		xradius = (int) (((main.screensize.width/34)/2));
+		xradius = (int) (((main.screensize.width/34)/2)+1);
 		yradius = (int) (((main.screensize.height/34)/2)+1);
 		
 		onscreenarray = new JLabel[(xradius*2)+1][(yradius*2)+1];
@@ -27,11 +29,161 @@ public class EnvironmentHandler implements Runnable {
 	
 	@Override
 	public void run() {
-	
+		
 		if (!main.getPlayer().getCurrentEnvironment().equals(environment)) {
 			
 			environment = main.getPlayer().getCurrentEnvironment();
 			changeEnvironments();
+			
+		}
+				
+		if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+			
+			for (JLabel[] jarray : onscreenarray) {
+				
+				for (JLabel j : jarray) {
+					
+					try {
+						
+						if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
+							
+							j.setLocation(j.getLocation().x+1, j.getLocation().y);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
+							
+							j.setLocation(j.getLocation().x-1, j.getLocation().y);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
+							
+							j.setLocation(j.getLocation().x, j.getLocation().y-1);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) && main.getPlayer().getLocation().getY() > 0) {
+						
+							j.setLocation(j.getLocation().x, j.getLocation().y+1);
+							
+						} else {
+								
+							if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
+									
+								main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
+								
+							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+								
+								main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
+									
+							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
+									
+								main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
+									
+							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
+									
+								main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
+									
+							}
+								
+						}
+						
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+						
+					}
+					
+				}
+				
+			}
+			
+			count ++;
+			
+		} 
+		
+		if (count >= 34) {
+			
+			array = main.getPlayer().getCurrentEnvironment().getArray();
+				
+			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
+					
+				if (main.getPlayer().getLocation().getX() > 0) {
+						
+					main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()-1);
+					main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);
+						
+					main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
+					
+				}
+				
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+				
+				if (main.getPlayer().getLocation().getX() < array.length-1) {
+						
+					main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()+1);
+					main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);
+						
+					main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
+					
+				}
+					
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
+					
+				if (main.getPlayer().getLocation().getY() < array.length-1) {
+						
+					main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()+1);
+					main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);
+						
+					main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
+					
+				}
+					
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
+					
+				if (main.getPlayer().getLocation().getY() > 0) {
+						
+					main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()-1);
+					main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);
+						
+					main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
+					
+				}
+					
+			}
+				
+			for (JLabel[] jarray : onscreenarray) {
+				
+				for (JLabel j : jarray) {
+					
+					try {
+						
+						if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+							
+							j.setLocation(j.getLocation().x-34, j.getLocation().y);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
+							
+							j.setLocation(j.getLocation().x+34, j.getLocation().y);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
+							
+							j.setLocation(j.getLocation().x, j.getLocation().y+34);
+							
+						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP)) {
+						
+							j.setLocation(j.getLocation().x, j.getLocation().y-34);
+							
+						}
+						
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+						
+					}
+					
+				}
+				
+			}
+				
+			updateEnvironment();
+				
+			count = 0;
 			
 		}
 		
@@ -74,65 +226,6 @@ public class EnvironmentHandler implements Runnable {
 		  
 	}
 	
-	public void moveRight() {
-			
-		array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getLocation().getX() > 0) {
-			
-			main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()-1);
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
-		
-			updateEnvironment();
-			
-		}
-		
-	}
-	
-	public void moveLeft() {			
-		
-		array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getLocation().getX() < array.length-1) {
-			
-			main.getPlayer().getLocation().setX(main.getPlayer().getLocation().getX()+1);
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
-		
-			updateEnvironment();
-			
-		}
-		
-	}
-	
-	public void moveUp() {
-					
-		array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getLocation().getY() < array.length-1) {
-			
-			main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()+1);
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
-		
-			updateEnvironment();
-			
-		}
-	}
-	
-	public void moveDown() {
-					
-		array = main.getPlayer().getCurrentEnvironment().getArray();
-		
-		if (main.getPlayer().getLocation().getY() > 0) {
-			
-			main.getPlayer().getLocation().setY(main.getPlayer().getLocation().getY()-1);
-			main.getPlayer().setCurrentTile(array[main.getPlayer().getLocation().getX()][main.getPlayer().getLocation().getY()]);	
-		
-			updateEnvironment();
-			
-		}
-		
-	}
-	
 	private void updateEnvironment() {
 		
 		for (int x = 0; x < (xradius*2)+1; x++) {
@@ -152,8 +245,6 @@ public class EnvironmentHandler implements Runnable {
 			}
 			
 		}
-		
-		main.repaint();
 		
 	}
 

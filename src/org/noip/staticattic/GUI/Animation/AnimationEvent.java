@@ -222,6 +222,42 @@ public class AnimationEvent {
 				
 			}
 		
+		} else if (getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
+			
+			if (entity.getClass().getSimpleName().equals("Player")) {
+				
+				entity.setIcon(TextureHandler.getMPlayerRight());
+				count = -1;
+				
+			}
+			
+		} else if (getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+			
+			if (entity.getClass().getSimpleName().equals("Player")) {
+				
+				entity.setIcon(TextureHandler.getMPlayerLeft());
+				count = -1;
+				
+			}
+			
+		} else if (getAnimationState().equals(AnimationState.IDLE_UP)) {
+			
+			if (entity.getClass().getSimpleName().equals("Player")) {
+				
+				entity.setIcon(TextureHandler.getMPlayerUp());
+				count = -1;
+				
+			}
+			
+		} else if (getAnimationState().equals(AnimationState.IDLE_DOWN)) {
+			
+			if (entity.getClass().getSimpleName().equals("Player")) {
+				
+				entity.setIcon(TextureHandler.getMPlayerDown());
+				count = -1;
+				
+			}
+			
 		}
 		
 		count++;

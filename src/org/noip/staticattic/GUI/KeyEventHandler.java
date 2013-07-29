@@ -27,7 +27,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_RIGHT);
-					main.getENhandler().moveLeft();
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
@@ -36,10 +35,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
 					
-				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
-					
-					main.getENhandler().moveLeft();
-					
 				}
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -47,7 +42,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT)) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_LEFT);
-					main.getENhandler().moveRight();
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
@@ -56,10 +50,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
 					
-				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
-					
-					main.getENhandler().moveRight();
-					
 				}
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -67,7 +57,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP)) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_UP);
-					main.getENhandler().moveDown();
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
@@ -76,10 +65,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
 					
-				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
-					
-					main.getENhandler().moveDown();
-					
 				}
 				
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -87,7 +72,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_DOWN);
-					main.getENhandler().moveUp();
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 					
@@ -95,10 +79,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
 					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
 					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
-					
-				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
-					
-					main.getENhandler().moveUp();
 					
 				}
 				
@@ -111,27 +91,6 @@ public class KeyEventHandler implements KeyEventDispatcher {
         
         } else if (e.getID() == KeyEvent.KEY_RELEASED) {
         	
-        	if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-    			
-    			main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
-    			main.getPlayer().setIcon(TextureHandler.getMPlayerRight());
-    			
-    		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-    			
-    			main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
-    			main.getPlayer().setIcon(TextureHandler.getMPlayerLeft());
-    			
-    		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-    			
-    			main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
-    			main.getPlayer().setIcon(TextureHandler.getMPlayerUp());
-    			
-    		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-    			
-    			main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
-    			main.getPlayer().setIcon(TextureHandler.getMPlayerDown());
-    			
-    		}
         	
         } else if (e.getID() == KeyEvent.KEY_TYPED) {
  
