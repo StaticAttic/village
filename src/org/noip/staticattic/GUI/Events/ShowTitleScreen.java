@@ -21,7 +21,6 @@ public class ShowTitleScreen extends GUIEvent {
 	public void execute() {
 		
 		super.getMain().mainpanel.setBackground(Color.BLACK);
-		super.getMain().mainpanel.setOpaque(true);
 		
 		Clip clip = null;
 		

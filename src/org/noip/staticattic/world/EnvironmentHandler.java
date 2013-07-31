@@ -191,7 +191,7 @@ public class EnvironmentHandler implements Runnable {
 			for (int y = 0; y < (yradius*2)+1; y++) {
 				
 				onscreenarray[x][y] = new JLabel();
-				onscreenarray[x][y].setBounds(main.getPlayer().getLabel().getLocation().x-(xradius*34)+(34*x), main.getPlayer().getLabel().getLocation().y-(yradius*34)+(34*y)+14, 34, 34);
+				onscreenarray[x][y].setBounds(main.getPlayer().getLabel().getLocation().x-(xradius*34)+(34*x)+34, main.getPlayer().getLabel().getLocation().y-(yradius*34)+(34*y)+48, 34, 34);
 				
 				try {
 					
@@ -210,7 +210,7 @@ public class EnvironmentHandler implements Runnable {
 		}
 		
 		panel.setVisible(true);
-		panel.setBounds(0, 0, onscreenarray[xradius*2][0].getX()+34, onscreenarray[0][yradius*2].getY()+34);
+		panel.setBounds(-34, -34, onscreenarray[xradius*2][0].getX()+34, onscreenarray[0][yradius*2].getY()+34);
 		panel.setLayout(null);
 		
 		main.mainpanel.add(panel);

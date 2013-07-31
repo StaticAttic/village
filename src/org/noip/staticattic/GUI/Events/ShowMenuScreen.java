@@ -21,7 +21,6 @@ public class ShowMenuScreen extends GUIEvent{
 		
 		super.getMain().mainpanel.removeAll();
 		super.getMain().mainpanel.setBackground(Color.WHITE);
-		super.getMain().mainpanel.setOpaque(true);
 		
 		JButton exit = new JButton();
 		JButton newgame = new JButton();
