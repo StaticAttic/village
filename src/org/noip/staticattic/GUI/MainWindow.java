@@ -46,6 +46,7 @@ public class MainWindow extends JFrame implements ActionListener {
 		this.setIconImage(TextureHandler.getIcon().getImage());
 		
 		mainpanel = new JPanel();
+		mainpanel.setOpaque(false);
 		mainpanel.setVisible(true);
 		mainpanel.setLayout(null);
 		

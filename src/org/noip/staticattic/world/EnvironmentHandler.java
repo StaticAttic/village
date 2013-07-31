@@ -1,6 +1,7 @@
 package org.noip.staticattic.world;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import org.noip.staticattic.GUI.MainWindow;
 import org.noip.staticattic.entities.Entity.AnimationState;
@@ -16,6 +17,7 @@ public class EnvironmentHandler implements Runnable {
 	private Tile[][] array;
 	private int count = 0;
 	private boolean moving = false;
+	JPanel panel = new JPanel();
 	
 	public EnvironmentHandler(MainWindow main) {
 		
@@ -42,60 +44,44 @@ public class EnvironmentHandler implements Runnable {
 			
 			setMoving(true);
 			
-			for (JLabel[] jarray : onscreenarray) {
-				
-				for (JLabel j : jarray) {
-					
-					try {
+			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
+							
+				panel.setLocation(panel.getLocation().x+2, panel.getLocation().y);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
+							
+				panel.setLocation(panel.getLocation().x-2, panel.getLocation().y);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
+							
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y-2);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) && main.getPlayer().getLocation().getY() > 0) {
 						
-						if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y+2);
 							
-							j.setLocation(j.getLocation().x+2, j.getLocation().y);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
-							
-							j.setLocation(j.getLocation().x-2, j.getLocation().y);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
-							
-							j.setLocation(j.getLocation().x, j.getLocation().y-2);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) && main.getPlayer().getLocation().getY() > 0) {
-						
-							j.setLocation(j.getLocation().x, j.getLocation().y+2);
-							
-						} else {
+			} else {
 								
-							if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
+				if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
 									
-								main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
+					main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
 								
-							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
 								
-								main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
+					main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
 									
-							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
+				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
 									
-								main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
+					main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
 									
-							} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
+				} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
 									
-								main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
+					main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
 									
-							}
-								
-						}
-						
-					} catch (Exception e) {
-						
-						e.printStackTrace();
-						
-					}
-					
 				}
-				
+								
 			}
-			
+						
 			count ++;
 			
 		} 
@@ -150,38 +136,22 @@ public class EnvironmentHandler implements Runnable {
 					
 			}
 				
-			for (JLabel[] jarray : onscreenarray) {
-				
-				for (JLabel j : jarray) {
-					
-					try {
+			if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+							
+				panel.setLocation(panel.getLocation().x-34, panel.getLocation().y);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
+							
+				panel.setLocation(panel.getLocation().x+34, panel.getLocation().y);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
+							
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y+34);
+							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP)) {
 						
-						if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT)) {
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y-34);
 							
-							j.setLocation(j.getLocation().x-34, j.getLocation().y);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
-							
-							j.setLocation(j.getLocation().x+34, j.getLocation().y);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-							
-							j.setLocation(j.getLocation().x, j.getLocation().y+34);
-							
-						} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP)) {
-						
-							j.setLocation(j.getLocation().x, j.getLocation().y-34);
-							
-						}
-						
-					} catch (Exception e) {
-						
-						e.printStackTrace();
-						
-					}
-					
-				}
-				
 			}
 				
 			updateEnvironment();
@@ -203,6 +173,18 @@ public class EnvironmentHandler implements Runnable {
 		main.getANhandler().setEntityList(main.getPlayer().getCurrentEnvironment().getEntityList());
 		
 		main.mainpanel.add(main.getPlayer().getLabel());
+		
+		try {
+			
+			main.remove(panel);
+			
+		} catch (Exception e) {
+			
+			//swallow - panel not added in current state
+			
+		}
+		
+		panel.removeAll();
 				
 		for (int x = 0; x < (xradius*2)+1; x++) {
 			
@@ -221,12 +203,17 @@ public class EnvironmentHandler implements Runnable {
 					
 				}
 				
-				main.mainpanel.add(onscreenarray[x][y]);
+				panel.add(onscreenarray[x][y]);
 				
 			}
 			
 		}
 		
+		panel.setVisible(true);
+		panel.setBounds(0, 0, onscreenarray[xradius*2][0].getX()+34, onscreenarray[0][yradius*2].getY()+34);
+		panel.setLayout(null);
+		
+		main.mainpanel.add(panel);
 		main.repaint();
 		  
 	}

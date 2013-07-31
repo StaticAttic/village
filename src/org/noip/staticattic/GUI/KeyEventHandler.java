@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 
 import org.noip.staticattic.GUI.Events.ShowMenuScreen;
 import org.noip.staticattic.entities.Entity.AnimationState;
-import org.noip.staticattic.fileutils.TextureHandler;
 
 public class KeyEventHandler implements KeyEventDispatcher {
 	
@@ -27,13 +26,12 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_RIGHT);
+					return true;
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-					
-					main.getPlayer().setIcon(TextureHandler.getMPlayerRight());
-					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
-					
+
 					main.getPlayer().setAnimationState(AnimationState.IDLE_RIGHT);
+					return true;
 					
 				}
 				
@@ -42,13 +40,12 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_LEFT);
+					return true;
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
-					
-					main.getPlayer().setIcon(TextureHandler.getMPlayerLeft());
-					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
-					
+			
 					main.getPlayer().setAnimationState(AnimationState.IDLE_LEFT);
+					return true;
 					
 				}
 				
@@ -57,13 +54,12 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_UP);
+					return true;
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getMPlayerUp());
-					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
-					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_UP);
+					return true;
 					
 				}
 				
@@ -72,13 +68,12 @@ public class KeyEventHandler implements KeyEventDispatcher {
 				if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_DOWN) && !main.getENhandler().isMoving()) {
 					
 					main.getPlayer().setAnimationState(AnimationState.WALKING_DOWN);
+					return true;
 					
 				} else if (main.getPlayer().getAnimationState().equals(AnimationState.IDLE_UP) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.IDLE_RIGHT)) {
 					
-					main.getPlayer().setIcon(TextureHandler.getMPlayerDown());
-					main.getPlayer().getLabel().setIcon(main.getPlayer().getIcon());
-					
 					main.getPlayer().setAnimationState(AnimationState.IDLE_DOWN);
+					return true;
 					
 				}
 				
@@ -86,7 +81,8 @@ public class KeyEventHandler implements KeyEventDispatcher {
         		
         		main.getUIhandler().purgeQueue();
     			main.getUIhandler().addToQueue(new ShowMenuScreen(main, 0));
-        		
+        		return true;
+    			
         	}
         
         } else if (e.getID() == KeyEvent.KEY_RELEASED) {
@@ -97,7 +93,8 @@ public class KeyEventHandler implements KeyEventDispatcher {
         	
         }
 		
-		return false;
+        return false;
+		
 	}
 
 }

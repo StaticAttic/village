@@ -1,6 +1,7 @@
 package org.noip.staticattic.GUI.Events;
 
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -20,6 +21,7 @@ public class ShowMenuScreen extends GUIEvent{
 		
 		super.getMain().mainpanel.removeAll();
 		super.getMain().mainpanel.setBackground(Color.WHITE);
+		super.getMain().mainpanel.setOpaque(true);
 		
 		JButton exit = new JButton();
 		JButton newgame = new JButton();
