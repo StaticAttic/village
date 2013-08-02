@@ -31,6 +31,7 @@ public class MainWindow extends JFrame implements ActionListener {
 	private AnimationHandler ANhandler = new AnimationHandler(this);
 	private JCheckBox checkbox;
 	public JPanel mainpanel;
+	private boolean ingame;
 	private Gender gender = null;
 	private Player player;
 	
@@ -107,8 +108,10 @@ public class MainWindow extends JFrame implements ActionListener {
 			
 			mainpanel.removeAll();
 			
-			executor.scheduleAtFixedRate(ENhandler, 0L, 20L, TimeUnit.MILLISECONDS);
+			executor.scheduleAtFixedRate(ENhandler, 0L, 10L, TimeUnit.MILLISECONDS);
 			executor.scheduleAtFixedRate(ANhandler, 0L, 20L, TimeUnit.MILLISECONDS);
+			
+			setInGame(true);
 			
 		}
 		
@@ -166,6 +169,18 @@ public class MainWindow extends JFrame implements ActionListener {
 	public void setUIhandler(UIHandler handler) {
 		
 		this.UIhandler = handler;
+		
+	}
+
+	public boolean isInGame() {
+		
+		return ingame;
+		
+	}
+
+	public void setInGame(boolean ingame) {
+		
+		this.ingame = ingame;
 		
 	}
 	

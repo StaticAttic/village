@@ -46,20 +46,40 @@ public class EnvironmentHandler implements Runnable {
 			
 			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
 							
-				panel.setLocation(panel.getLocation().x+2, panel.getLocation().y);
+				panel.setLocation(panel.getLocation().x+1, panel.getLocation().y);
 							
 			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
 							
-				panel.setLocation(panel.getLocation().x-2, panel.getLocation().y);
+				panel.setLocation(panel.getLocation().x-1, panel.getLocation().y);
 							
 			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
 							
-				panel.setLocation(panel.getLocation().x, panel.getLocation().y-2);
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y-1);
 							
 			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) && main.getPlayer().getLocation().getY() > 0) {
 						
-				panel.setLocation(panel.getLocation().x, panel.getLocation().y+2);
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y+1);
 							
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_LEFT) && main.getPlayer().getLocation().getX() > 0) {
+
+				panel.setLocation(panel.getLocation().x+2, panel.getLocation().y);
+				count++;
+			
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_RIGHT) && main.getPlayer().getLocation().getX() < array.length-1) {
+
+				panel.setLocation(panel.getLocation().x-2, panel.getLocation().y);
+				count++;
+				
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_UP) && main.getPlayer().getLocation().getY() > 0) {
+
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y+2);
+				count++;
+				
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_DOWN) && main.getPlayer().getLocation().getY() < array.length-1) {
+
+				panel.setLocation(panel.getLocation().x, panel.getLocation().y-2);
+				count++;
+		
 			} else {
 								
 				if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
@@ -86,11 +106,11 @@ public class EnvironmentHandler implements Runnable {
 			
 		} 
 		
-		if (count >= 17) {
+		if (count == 34) {
 			
 			array = main.getPlayer().getCurrentEnvironment().getArray();
 				
-			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT)) {
+			if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_LEFT) || main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_LEFT)) {
 					
 				if (main.getPlayer().getLocation().getX() > 0) {
 						
@@ -101,7 +121,7 @@ public class EnvironmentHandler implements Runnable {
 					
 				}
 				
-			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT)) {
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_RIGHT) || main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_RIGHT)) {
 				
 				if (main.getPlayer().getLocation().getX() < array.length-1) {
 						
@@ -112,7 +132,7 @@ public class EnvironmentHandler implements Runnable {
 					
 				}
 					
-			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN)) {
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_DOWN) || main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_DOWN)) {
 					
 				if (main.getPlayer().getLocation().getY() < array.length-1) {
 						
@@ -123,7 +143,7 @@ public class EnvironmentHandler implements Runnable {
 					
 				}
 					
-			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP)) {
+			} else if (main.getPlayer().getAnimationState().equals(AnimationState.WALKING_UP) || main.getPlayer().getAnimationState().equals(AnimationState.RUNNING_UP)) {
 					
 				if (main.getPlayer().getLocation().getY() > 0) {
 						
