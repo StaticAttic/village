@@ -40,6 +40,7 @@ public class TextureHandler {
 	private static ImageIcon mplayerselectionover = new ImageIcon();
 	private static ImageIcon fplayerselectionup = new ImageIcon();
 	private static ImageIcon fplayerselectionover = new ImageIcon();
+	private static ImageIcon water = new ImageIcon();
 	
 	public static void loadAllTextures() {
 		
@@ -77,6 +78,7 @@ public class TextureHandler {
 			mplayerselectionover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/dudeselectionover.fw.png")));
 			fplayerselectionup = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/dudetteselectionup.fw.png")));
 			fplayerselectionover = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/dudetteselectionover.fw.png")));
+			water = new ImageIcon(ImageIO.read(TextureHandler.class.getResource("/resources/img/GUI/water.fw.png")));
 		    
 		} catch (Exception e1) {
 		    
@@ -115,6 +117,7 @@ public class TextureHandler {
 				mplayerselectionover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudeselectionover.fw.png")));
 				fplayerselectionup = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudetteselectionup.fw.png")));
 				fplayerselectionover = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/dudetteselectionover.fw.png")));
+				water = new ImageIcon(ImageIO.read(new File(System.getProperty("user.home")+"/village/water.fw.png")));
 		     
 		    } catch (Exception e2) {
 		     
@@ -321,6 +324,12 @@ public class TextureHandler {
 	public static ImageIcon getFPlayerSelectionOver() {
 		
 		return fplayerselectionover;
+		
+	}
+
+	public static ImageIcon getWater() {
+		
+		return water;
 		
 	}
 
